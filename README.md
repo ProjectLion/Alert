@@ -1,9 +1,6 @@
 HTAlert
 ===========
-这是一个可以完全自定义的Alert,其中代码和思路借鉴(copy🤦‍♀️)了 “lixiang1994”大佬的LEEAlert,说白了就是LEEAlert的Swift版啦。这是xixiang1994的LEEAlert👉
-
-[![](https://img.shields.io/badge/Xcode-10.0-blue.svg)](https://developer.apple.com/xcode/)&nbsp;
-[![](https://img.shields.io/badge/language-Swift-f48041.svg?style=flat)](https://www.apple.com/)&nbsp;
+基于`Xcode 10.0`   `Swift 4.2`写的，可能有的小伙伴clone到本地后运行不起来，因为 `Swift 4.2` 更新了一些语法，没关系。都不是什么大问题，根据  `Xcode` 提示改完就OK了。在此感谢[lixiang1994](https://github.com/lixiang1994) ,该库参照(copy、仿写)了 [lixiang1994的LEEAlert(OC)](https://github.com/lixiang1994/LEEAlert)。
 
 用法
 ===========
@@ -130,4 +127,5 @@ HTAlert
 
  致谢
  ==============
-[感谢lixiang1994](http://www.jianshu.com/users/a6da0db100c8)
+[lixiang1994的简书](http://www.jianshu.com/users/a6da0db100c8)
+[lixiang1994的GitHub](https://github.com/lixiang1994)
