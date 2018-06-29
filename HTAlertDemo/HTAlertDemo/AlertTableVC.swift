@@ -113,7 +113,7 @@ class AlertTableVC: UITableViewController {
         case 0:
             clickBase(index: indexPath.row)
         case 1:
-            break
+            clickDemo(index: indexPath.row)
         default:
             break
         }
@@ -123,6 +123,7 @@ class AlertTableVC: UITableViewController {
 
 extension AlertTableVC {
     
+    /// base演示
     func clickBase(index: Int) {
         switch index {
         case 0:
@@ -277,16 +278,27 @@ extension AlertTableVC {
                 })
                 .show()
         case 8:
-            HTAlert.sheet().config
-                .cancelAction("取消") {
-                    
+            var tempAction = HTAction()
+            HTAlert.alert().config
+            .title("点击改变 第一个action会长高")
+                .addAction { (action) in
+                    action.title = "我是action"
+                    tempAction = action
             }
-            .title("这是一个sheet的标题")
-                .action("另一个action") {
-                    
-            }
-                .content("这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容")
-                .show()
+                .addAction(config: { (action) in
+                    action.title = "改变"
+                    action.isClickClose = false
+                    action.clickBlock = {
+                        tempAction.height += 20
+                        tempAction.title = "我长高了"
+                        tempAction.color = .red
+                        tempAction.update()
+                    }
+                })
+                .cancelAction("取消", block: {
+                    // 点击取消的回调
+                })
+            .show()
         case 9:
             var titleLabel = UILabel()
             var contenLabel = UILabel()
@@ -362,9 +374,85 @@ extension AlertTableVC {
                 .queuePriority(3)
                 .queue(true)
                 .show()
+        case 12:
+            HTAlert.alert().config
+                .title("自定义动画配置的 alert ")
+                .content("支持 自定义打开动画和关闭动画 基于 UIView的动画API")
+                .action("OK") {
+                    
+            }
+                .openAnimationConfig { (animating, animated) in
+                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: [UIView.AnimationOptions.allowUserInteraction], animations: {
+                        animating()
+                    }, completion: { (finish) in
+                        animated()
+                    })
+            }
+                .closeAnimationConfig { (animating, animated) in
+                    UIView.animate(withDuration: 0.35, delay: 0, options: [.curveEaseInOut], animations: {
+                        animating()
+                    }, completion: { (finish) in
+                        animated()
+                    })
+            }
+            .show()
+        case 13:
+            
+            /*
+             动画样式的方向只可以设置一个 其他样式枚举可随意增加.
+             动画样式和动画配置可同时设置 这里不多做演示 欢迎自行探索
+             */
+            
+            HTAlert.alert().config
+            .title("自定义动画样式的alert")
+            .content("动画样式可设置方向、淡出淡入、缩放eg")
+                .action("OK") {
+                    
+            }
+            .openAnimationStyle([.left, .magnify])
+            .closeAnimationStyle([.right, .shrink])
+            .show()
         default:
             break
         }
     }
     
+    
+    /// demo演示
+    func clickDemo(index: Int) {
+        switch index {
+        case 0:
+            HTAlert.alert().config
+                .addTitle { (label) in
+                    label.text = "确认删除？"
+                    label.textColor = .white
+            }
+                .addContent { (label) in
+                    label.text = "删除后将无法恢复，请考虑再三"
+                    label.textColor = UIColor.white.withAlphaComponent(0.7)
+            }
+                .addAction { (action) in
+                    action.type = .cancel
+                    action.title = "取消"
+                    action.color = .blue
+                    action.backgroundColor = .white
+                    action.clickBlock = {
+                        
+                    }
+            }
+                .addAction { (action) in
+                    action.type = .destructive
+                    action.title = "删除"
+                    action.color = .blue
+                    action.backgroundColor = .white
+                    action.clickBlock = {
+                        
+                    }
+            }
+            .headerColor(.blue)
+            .show()
+        default:
+            break
+        }
+    }
 }

@@ -135,9 +135,9 @@
 		8E376A3D20E5FFEF00D9F453 /* HTAlertDemo */ = {
 			isa = PBXGroup;
 			children = (
-				8E376A8120E6003800D9F453 /* AlertTableVC.swift */,
 				8E376A6D20E6003800D9F453 /* HTAlert */,
 				8E376A8220E6003800D9F453 /* SheetTableVC.swift */,
+				8E376A8120E6003800D9F453 /* AlertTableVC.swift */,
 				8E376A6C20E6003800D9F453 /* TabBarViewController.swift */,
 				8E376A3E20E5FFEF00D9F453 /* AppDelegate.swift */,
 				8E376A4020E5FFEF00D9F453 /* ViewController.swift */,
@@ -170,13 +170,13 @@
 		8E376A6D20E6003800D9F453 /* HTAlert */ = {
 			isa = PBXGroup;
 			children = (
-				8E376A6E20E6003800D9F453 /* HTAlertConfigModel.swift */,
-				8E376A6F20E6003800D9F453 /* Extension */,
-				8E376A7120E6003800D9F453 /* HTAlertConfig.swift */,
-				8E376A7220E6003800D9F453 /* ViewControllers */,
-				8E376A7720E6003800D9F453 /* CustomViews */,
 				8E376A7F20E6003800D9F453 /* HTAlertHelper.swift */,
 				8E376A8020E6003800D9F453 /* HTAlert.swift */,
+				8E376A6E20E6003800D9F453 /* HTAlertConfigModel.swift */,
+				8E376A7120E6003800D9F453 /* HTAlertConfig.swift */,
+				8E376A6F20E6003800D9F453 /* Extension */,
+				8E376A7220E6003800D9F453 /* ViewControllers */,
+				8E376A7720E6003800D9F453 /* CustomViews */,
 			);
 			path = HTAlert;
 			sourceTree = "<group>";
