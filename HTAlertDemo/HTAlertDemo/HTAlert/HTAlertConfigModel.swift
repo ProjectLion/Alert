@@ -491,7 +491,13 @@ extension HTAlertConfigModel {
     /// - Parameter opacity: 透明度
     /// - Returns: self
     @discardableResult public func shadowOpacity(_ opacity: Float) -> HTAlertConfigModel {
-        shadowOpacity = opacity
+        if opacity > 1 {
+            shadowOpacity = 1
+        } else if opacity < 0 {
+            shadowOpacity = 0
+        } else {
+            shadowOpacity = opacity
+        }
         return self
     }
     

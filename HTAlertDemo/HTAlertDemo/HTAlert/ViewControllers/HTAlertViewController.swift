@@ -287,14 +287,23 @@ class HTAlertViewController: HTAlertBaseViewController {
             }
         }
         
-        for (_, obj) in (config.actionArray?.enumerated())! {
+        for (idx, obj) in (config.actionArray?.enumerated())! {
             let action = HTAction()
             obj(action)
 
             let btn = HTActionButton()
             
             if action.borderPosition.rawValue == 1 {
-                action.borderPosition = config.actionArray?.count == 2 ? [.top, .right] : [.top]
+                if config.actionArray?.count == 2 {
+                    // 修复只有两个action项时，右边action有右边框的bug
+                    if idx == 0 {
+                        action.borderPosition = [.top, .right]
+                    } else {
+                        action.borderPosition = [.top]
+                    }
+                } else {
+                    action.borderPosition = [.top]
+                }
             }
             
             btn.action = action

@@ -263,18 +263,31 @@ extension AlertTableVC {
             HTAlert.alert().config
                 .title("可以添加多个action")
                 .addAction(config: { (action) in
-                    action.title = "自定义"
+                    action.title = "自定义action 图片在左(偏移量需要自己计算)"
+                    action.font = UIFont.systemFont(ofSize: 10)
                     action.image = UIImage(named: "smile")
                     action.imageInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
                     action.height = 60
                 })
                 .addAction(config: { (action) in
-                    action.title = "自定义action"
+                    action.title = "自定义action 图片在右(偏移量需要自己计算)"
+                    action.font = UIFont.systemFont(ofSize: 10)
                     action.color = .green
+                    action.image = UIImage(named: "smile")
+                    action.imageInsets = UIEdgeInsets(top: 0, left: 220, bottom: 0, right: -220)
+                    action.titleInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 20)
                     action.clickBlock = {
                         ht_print(message: "点击回调")
                     }
-                    action.borderPosition = [.top, .bottom]
+                    action.height = 60
+                    action.borderPosition = [.top]
+                })
+                .addAction(config: { (action) in
+                    action.borderPosition = .top
+                    action.backgroundColor = .green
+                    action.title = "绿色背景的action"
+                    action.color = .white
+                    action.height = 100
                 })
                 .show()
         case 8:
@@ -298,7 +311,13 @@ extension AlertTableVC {
                 .cancelAction("取消", block: {
                     // 点击取消的回调
                 })
-            .show()
+                .shadowOpacity(2)
+                .animationDuration(open: 0.25, close: 0.25)
+                .openAnimationStyle([.bottom, .fade, .magnify])
+                .closeAnimationStyle([.bottom, .fade])
+                .backgroundStyleTranslucent(0)
+                .shadowColor(.black)
+                .show()
         case 9:
             var titleLabel = UILabel()
             var contenLabel = UILabel()
@@ -338,7 +357,13 @@ extension AlertTableVC {
                 .cancelAction("取消", block: {
                     // 点击取消的回调
                 })
-                .backgroundStyleBlur(.light)
+                .addCustomView(config: { (v) in
+                    let backV = UIView(x: 100, y: 0, width: 50, height: 50)
+                    backV.backgroundColor = .red
+                    v.view = backV
+                    v.isAutoWidth = false
+                })
+                .backgroundStyleBlur(.prominent)
                 .show()
         case 11:
             HTAlert.alert().config
@@ -406,7 +431,7 @@ extension AlertTableVC {
             HTAlert.alert().config
             .title("自定义动画样式的alert")
             .content("动画样式可设置方向、淡出淡入、缩放eg")
-                .action("OK") {
+            .action("OK") {
                     
             }
             .openAnimationStyle([.left, .magnify])

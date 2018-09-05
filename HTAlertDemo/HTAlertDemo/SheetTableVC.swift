@@ -321,7 +321,7 @@ extension SheetTableVC {
                 .cancelAction("取消", block: {
                     // 点击取消的回调
                 })
-                .backgroundStyleBlur(.light)
+                .backgroundStyleBlur(.prominent)
                 .show()
         case 11:
             HTAlert.sheet().config
