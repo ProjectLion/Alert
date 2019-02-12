@@ -1,6 +1,6 @@
 //
 //  AlertTableVC.swift
-//  HTAlertDemo
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/28.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -22,7 +22,7 @@ class AlertTableVC: UITableViewController {
                    Model(title: "4、显示一个横竖屏不同宽度的 alert 弹框", conten: "可以对横竖屏的最大宽度进行设置"),
                    Model(title: "5、显示一个自定义标题和内容的 alert 弹框", conten: "除了标题和内容 其他控件均支持自定义."),
                    Model(title: "6、显示一个多种action的 alert 弹框", conten: "action分为三种类型 可添加多个 设置的顺序决定了显示的顺序."),
-                   Model(title: "7、显示一个自定义action的 alert 弹框", conten: "action的自定义属性可查看\"HTAction\"类."),
+                   Model(title: "7、显示一个自定义action的 alert 弹框", conten: "action的自定义属性可查看\"Action\"类."),
                    Model(title: "8、显示一个可动态改变action的 alert 弹框", conten: "已经显示后 可再次对action进行调整"),
                    Model(title: "9、显示一个可动态改变标题和内容的 alert 弹框", conten: "已经显示后 可再次对其进行调整"),
                    Model(title: "10、显示一个模糊背景样式的 alert 弹框", conten: "传入UIBlurEffectStyle枚举类型 默认为Dark"),
@@ -44,7 +44,7 @@ class AlertTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "HTAlert(控件的显示顺序与添加顺序有关)"
+        self.title = "Alert(控件的显示顺序与添加顺序有关)"
         
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .automatic
@@ -127,25 +127,24 @@ extension AlertTableVC {
     func clickBase(index: Int) {
         switch index {
         case 0:
-            HTAlert.alert().config
-                .title("这是标题")
-                .content("这是内容")
-                .cancelAction("取消") {
-                    // 点击取消按钮的回调
-            }
-                .action("确定") {
-                    // 点击确定按钮的回调
-            }
+            let custom = UIView(x: 0, y: 0, width: 100, height: 200, backGroundColor: .red)
+            Alert.alert.config
+            .closeAnimationStyle(.fade)
+            .customView(custom)
+                .action("好的", block: {
+                    print("好的")
+                })
             .show()
         case 1:
             var tf = UITextField()
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("这是标题")
                 .content("这是内容")
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
                     action.highLightTitle = "高亮了"
+                    action.isClickClose = true
                     action.highLightColor = .cyan
                 })
                 .addTextField(config: { (textField) in
@@ -157,11 +156,11 @@ extension AlertTableVC {
                 })
                 .action("确定") {
                     // 点击确定按钮的回调
-                    ht_print(message: tf.text)
+                    print(message: tf.text)
                 }
                 .show()
         case 2:
-            HTAlert.alert().config
+            Alert.alert.config
                 .addTextField(config: { (textField) in
                     textField.placeholder = "这里是输入框"
                 })
@@ -175,13 +174,15 @@ extension AlertTableVC {
                 }
                 .addAction(config: { (action) in
                     action.title = "取消"
+                    action.isClickClose = true
+                    action.type = Action.ActionType.defualt
                     action.color = .red
                     action.highLightTitle = "高亮了"
                     action.highLightColor = .cyan
                 })
                 .show()
         case 3:
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("这是标题")
                 .content("这是内容")
                 .addCustomView(config: { (view) in
@@ -198,7 +199,7 @@ extension AlertTableVC {
                 })
                 .show()
         case 4:
-            HTAlert.alert().config
+            Alert.alert.config
                 .configMaxWidth(block: { (type) -> CGFloat in
                     switch type {
                     case .horizontal:
@@ -220,7 +221,7 @@ extension AlertTableVC {
                 })
                 .show()
         case 5:
-            HTAlert.alert().config
+            Alert.alert.config
                 .addTitle(config: { (label) in
                     label.text = "这是自定义的label实现的"
                     label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -242,7 +243,7 @@ extension AlertTableVC {
                 })
                 .show()
         case 6:
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("可以添加多个action")
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -254,13 +255,13 @@ extension AlertTableVC {
                     action.title = "这是一个action"
                     action.color = .green
                     action.clickBlock = {
-                        ht_print(message: "点击回调")
+                        print(message: "点击回调")
                     }
                     action.borderPosition = [.top, .bottom]
                 })
                 .show()
         case 7:
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("可以添加多个action")
                 .addAction(config: { (action) in
                     action.title = "自定义action 图片在左(偏移量需要自己计算)"
@@ -277,7 +278,7 @@ extension AlertTableVC {
                     action.imageInsets = UIEdgeInsets(top: 0, left: 220, bottom: 0, right: -220)
                     action.titleInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 20)
                     action.clickBlock = {
-                        ht_print(message: "点击回调")
+                        print(message: "点击回调")
                     }
                     action.height = 60
                     action.borderPosition = [.top]
@@ -291,8 +292,8 @@ extension AlertTableVC {
                 })
                 .show()
         case 8:
-            var tempAction = HTAction()
-            HTAlert.alert().config
+            var tempAction = Action()
+            Alert.alert.config
             .title("点击改变 第一个action会长高")
                 .addAction { (action) in
                     action.title = "我是action"
@@ -322,7 +323,7 @@ extension AlertTableVC {
             var titleLabel = UILabel()
             var contenLabel = UILabel()
             
-            HTAlert.alert().config
+            Alert.alert.config
                 .addTitle { (label) in
                     label.text = "动态改变标题和内容的alert"
                     titleLabel = label
@@ -348,7 +349,7 @@ extension AlertTableVC {
             }
             .show()
         case 10:
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("这是一个毛玻璃背景样式的alert")
                 .content("通过backgroundStyleBlur设置效果")
                 .action("确定") {
@@ -366,7 +367,7 @@ extension AlertTableVC {
                 .backgroundStyleBlur(.prominent)
                 .show()
         case 11:
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("第一个alert")
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -377,7 +378,7 @@ extension AlertTableVC {
                 .queuePriority(1)
                 .queue(true)
                 .show()
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("第二个alert")
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -388,7 +389,7 @@ extension AlertTableVC {
                 .queuePriority(2)
                 .queue(true)
                 .show()
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("第三个alert")
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -400,12 +401,13 @@ extension AlertTableVC {
                 .queue(true)
                 .show()
         case 12:
-            HTAlert.alert().config
+            Alert.alert.config
                 .title("自定义动画配置的 alert ")
                 .content("支持 自定义打开动画和关闭动画 基于 UIView的动画API")
                 .action("OK") {
                     
             }
+                .openAnimationStyle([.bottom, .fade, .magnify])
                 .openAnimationConfig { (animating, animated) in
                     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: [UIView.AnimationOptions.allowUserInteraction], animations: {
                         animating()
@@ -413,6 +415,7 @@ extension AlertTableVC {
                         animated()
                     })
             }
+                .closeAnimationStyle([.top, .fade, .shrink])
                 .closeAnimationConfig { (animating, animated) in
                     UIView.animate(withDuration: 0.35, delay: 0, options: [.curveEaseInOut], animations: {
                         animating()
@@ -428,7 +431,7 @@ extension AlertTableVC {
              动画样式和动画配置可同时设置 这里不多做演示 欢迎自行探索
              */
             
-            HTAlert.alert().config
+            Alert.alert.config
             .title("自定义动画样式的alert")
             .content("动画样式可设置方向、淡出淡入、缩放eg")
             .action("OK") {
@@ -447,7 +450,7 @@ extension AlertTableVC {
     func clickDemo(index: Int) {
         switch index {
         case 0:
-            HTAlert.alert().config
+            Alert.alert.config
                 .addTitle { (label) in
                     label.text = "确认删除？"
                     label.textColor = .white

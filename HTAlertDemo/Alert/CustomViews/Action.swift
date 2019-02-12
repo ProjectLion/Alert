@@ -103,8 +103,8 @@ class Action: NSObject {
     /// action边框位置 默认 defaults
     public var borderPosition: Action.ActionBorderPosition = [.defaults]
     
-    /// action点击关闭(仅适用于defualt类型) 默认 false
-    public var isClickClose = false
+    /// action点击关闭(仅适用于defualt类型) 默认 true
+    public var isClickClose = true
     
     /// action点击事件回调
     public var clickBlock: () -> Void = {

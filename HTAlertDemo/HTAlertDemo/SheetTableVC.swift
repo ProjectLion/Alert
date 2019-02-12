@@ -1,6 +1,6 @@
 //
 //  SheetTableVC.swift
-//  HTAlertDemo
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/28.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -22,7 +22,7 @@ class SheetTableVC: UITableViewController {
                    Model(title: "4、显示一个横竖屏不同宽度的 sheet 菜单", conten: "最大高度与最大宽度设置方法一样"),
                    Model(title: "5、显示一个自定义标题和内容的 sheet 菜单", conten: "除了标题和内容 其他控件均支持自定义."),
                    Model(title: "6、显示一个多种action的 sheet 菜单", conten: "action分为三种类型 可添加多个 设置的顺序决定了显示的顺序."),
-                   Model(title: "7、显示一个自定义action的 sheet 菜单", conten: "action的自定义属性可查看\"HTAction\"类."),
+                   Model(title: "7、显示一个自定义action的 sheet 菜单", conten: "action的自定义属性可查看\"Action\"类."),
                    Model(title: "8、显示一个可动态改变action的 sheet 菜单", conten: "已经显示后 可再次对action进行调整"),
                    Model(title: "9、显示一个可动态改变标题和内容的 sheet 菜单", conten: "已经显示后 可再次对其进行调整"),
                    Model(title: "10、显示一个模糊背景样式的 sheet 弹框", conten: "传入UIBlurEffectStyle枚举类型 默认为Dark"),
@@ -124,7 +124,7 @@ extension SheetTableVC {
     func clickBase(index: Int) {
         switch index {
         case 0:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("这是标题")
                 .content("这是内容")
                 .cancelAction("取消") {
@@ -135,7 +135,7 @@ extension SheetTableVC {
                 }
                 .show()
         case 1:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("这是标题")
                 .content("这是内容")
                 .addAction(config: { (action) in
@@ -150,7 +150,7 @@ extension SheetTableVC {
                 }
                 .show()
         case 2:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .content("这是内容")
                 .title("这是标题")
                 .action("确定") {
@@ -164,7 +164,7 @@ extension SheetTableVC {
                 })
                 .show()
         case 3:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("这是标题")
                 .content("这是内容")
                 .addCustomView(config: { (view) in
@@ -181,7 +181,7 @@ extension SheetTableVC {
                 })
                 .show()
         case 4:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .configMaxWidth(block: { (type) -> CGFloat in
                     switch type {
                     case .horizontal:
@@ -203,7 +203,7 @@ extension SheetTableVC {
                 })
                 .show()
         case 5:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .addTitle(config: { (label) in
                     label.text = "这是自定义的label实现的"
                     label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -225,7 +225,7 @@ extension SheetTableVC {
                 })
                 .show()
         case 6:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("可以添加多个action")
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -237,13 +237,13 @@ extension SheetTableVC {
                     action.title = "这是一个action"
                     action.color = .green
                     action.clickBlock = {
-                        ht_print(message: "点击回调")
+                        print(message: "点击回调")
                     }
                     action.borderPosition = [.top, .bottom]
                 })
                 .show()
         case 7:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("可以添加多个action")
                 .addAction(config: { (action) in
                     action.title = "自定义"
@@ -255,14 +255,14 @@ extension SheetTableVC {
                     action.title = "自定义action"
                     action.color = .green
                     action.clickBlock = {
-                        ht_print(message: "点击回调")
+                        print(message: "点击回调")
                     }
                     action.borderPosition = [.top, .bottom]
                 })
                 .show()
         case 8:
-            var tempAction = HTAction()
-            HTAlert.sheet().config
+            var tempAction = Action()
+            Alert.sheet.config
                 .title("点击改变 第一个action会长高")
                 .addAction { (action) in
                     action.title = "我是action"
@@ -286,7 +286,7 @@ extension SheetTableVC {
             var titleLabel = UILabel()
             var contenLabel = UILabel()
             
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .addTitle { (label) in
                     label.text = "动态改变标题和内容的alert"
                     titleLabel = label
@@ -312,7 +312,7 @@ extension SheetTableVC {
                 }
                 .show()
         case 10:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("这是一个毛玻璃背景样式的alert")
                 .content("通过backgroundStyleBlur设置效果")
                 .action("确定") {
@@ -324,7 +324,7 @@ extension SheetTableVC {
                 .backgroundStyleBlur(.prominent)
                 .show()
         case 11:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("第一个alert")
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -335,7 +335,7 @@ extension SheetTableVC {
                 .queuePriority(1)
                 .queue(true)
                 .show()
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("第二个alert")
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -346,7 +346,7 @@ extension SheetTableVC {
                 .queuePriority(2)
                 .queue(true)
                 .show()
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("第三个alert")
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -358,7 +358,7 @@ extension SheetTableVC {
                 .queue(true)
                 .show()
         case 12:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("自定义动画配置的 alert ")
                 .content("支持 自定义打开动画和关闭动画 基于 UIView的动画API")
                 .action("OK") {
@@ -386,7 +386,7 @@ extension SheetTableVC {
              动画样式和动画配置可同时设置 这里不多做演示 欢迎自行探索
              */
             
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .title("自定义动画样式的alert")
                 .content("动画样式可设置方向、淡出淡入、缩放eg")
                 .action("OK") {
@@ -405,7 +405,7 @@ extension SheetTableVC {
     func clickDemo(index: Int) {
         switch index {
         case 0:
-            HTAlert.sheet().config
+            Alert.sheet.config
                 .addTitle { (label) in
                     label.text = "确认删除？"
                     label.textColor = .white

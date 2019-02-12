@@ -23,10 +23,6 @@ class AlertConfig: NSObject {
     override init() {
         super.init()
         config.configFinish = {
-//            [weak self] in
-//            if self == nil {
-//                return
-//            }
             if !Alert.shared.queueArray.isEmpty {
                 let last = (Alert.shared.queueArray.last)!
                 if !self.config.isQueue && last.config.queuePriorty > self.config.queuePriorty {

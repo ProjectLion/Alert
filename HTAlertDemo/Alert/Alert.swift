@@ -39,18 +39,33 @@ class Alert: NSObject {
     var viewController: AlertBaseViewController!
     
     /// alert
-    class func alert() -> AlertConfig {
-        let config = AlertConfig()
-        config.type = .alert
-        return config
+//    class func alert() -> AlertConfig {
+//        let config = AlertConfig()
+//        config.type = .alert
+//        return config
+//    }
+    static var alert: AlertConfig {
+        get {
+            let config = AlertConfig()
+            config.type = .alert
+            return config
+        }
     }
     
     /// sheet
-    class func sheet() -> AlertConfig {
-        let config = AlertConfig()
-        config.type = .sheet
-        config.config.isClickBackgroundClose(true)
-        return config
+//    class func sheet() -> AlertConfig {
+//        let config = AlertConfig()
+//        config.type = .sheet
+//        config.config.isClickBackgroundClose(true)
+//        return config
+//    }
+    static var sheet: AlertConfig {
+        get {
+            let config = AlertConfig()
+            config.type = .sheet
+            config.config.isClickBackgroundClose(true)
+            return config
+        }
     }
     
     /// 获取alert window
