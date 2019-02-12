@@ -1,6 +1,6 @@
 //
-//  HTCustomView.swift
-//  HTAlertDemo
+//  CustomView.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/25.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -9,24 +9,24 @@
 import UIKit
 
 /// 自定义视图对象
-class HTCustomView: NSObject {
+class CustomView: NSObject {
     
     /// 视图对象
     public var view: UIView!
     
     /// 自定义视图位置
-    public var position: HTCustomViewPosition = .center
+    public var position: CustomViewPosition = .center
     
     /// 是否自适应宽 默认 true
     public var isAutoWidth = true
     
-    public var item: HTItem = HTItem()
+    public var item: Item = Item()
     
     private var size = CGSize.zero
     
     public var sizeChangedBlock: () -> Void = {}{
         didSet{
-            ht_print(message: "调用了sizeChangedBlock")
+            print(message: "调用了sizeChangedBlock")
             view.layoutSubviews()
             size = view.frame.size
             view.addObserver(self, forKeyPath: "frame", options: NSKeyValueObservingOptions.new, context: nil)
@@ -38,7 +38,7 @@ class HTCustomView: NSObject {
     }
     
     deinit {
-        ht_print(message: "HTCustomView对象销毁了")
+        print(message: "HTCustomView对象销毁了")
         view.removeObserver(self, forKeyPath: "frame")
     }
     

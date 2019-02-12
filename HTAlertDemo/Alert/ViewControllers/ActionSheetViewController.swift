@@ -1,6 +1,6 @@
 //
 //  HTActionSheetViewController.swift
-//  HTAlertDemo
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/26.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HTActionSheetViewController: HTAlertBaseViewController {
+class ActionSheetViewController: AlertBaseViewController {
     
     public var containerView: UIView?
     
@@ -17,8 +17,8 @@ class HTActionSheetViewController: HTAlertBaseViewController {
         return arr
     }()
     
-    public var sheetActionArray: Array<HTActionButton> = {
-        let arr = Array<HTActionButton>()
+    public var sheetActionArray: Array<ActionButton> = {
+        let arr = Array<ActionButton>()
         return arr
     }()
     
@@ -39,10 +39,10 @@ class HTActionSheetViewController: HTAlertBaseViewController {
     
     
     private var sheetCancelSpaceView: UIView?
-    private var sheetCancelActionBtn: HTActionButton?
+    private var sheetCancelActionBtn: ActionButton?
     
     deinit {
-        ht_print(message: "HTAlertViewController deinit")
+        print(message: "AlertViewController deinit")
         sheetView = nil
         containerView = nil
         sheetCancelSpaceView = nil
@@ -97,39 +97,39 @@ class HTActionSheetViewController: HTAlertBaseViewController {
                 let tempAlertViewH = keyborderY - sheetView_H < 20 ? keyborderY - 20 : sheetView_H
                 let tempAlertViewY = keyborderY - tempAlertViewH - 10
                 
-                let originalAlertViewY = (height - (sheetView?.ht_height)!) * 0.5
+                let originalAlertViewY = (height - (sheetView?.height)!) * 0.5
                 
-                sheetView?.ht_height = tempAlertViewH
-                sheetView?.ht_width = alertMaxW
+                sheetView?.height = tempAlertViewH
+                sheetView?.width = alertMaxW
                 
-                containerView?.ht_width = alertMaxW
-                containerView?.ht_height = (sheetView?.ht_height)!
-                containerView?.ht_x = (width - alertMaxW) * 0.5
-                containerView?.ht_y = tempAlertViewY < originalAlertViewY ? tempAlertViewY : originalAlertViewY
+                containerView?.width = alertMaxW
+                containerView?.height = (sheetView?.height)!
+                containerView?.x = (width - alertMaxW) * 0.5
+                containerView?.y = tempAlertViewY < originalAlertViewY ? tempAlertViewY : originalAlertViewY
                 
                 sheetView?.scrollRectToVisible((findFirstResponder(view: sheetView!)?.frame)!, animated: true)
             }
         } else {
             updateAlertItemsLayout()
             
-            sheetView?.ht_height = sheetView_H > alertMaxH ? alertMaxH : sheetView_H
-            sheetView?.ht_width = alertMaxW
+            sheetView?.height = sheetView_H > alertMaxH ? alertMaxH : sheetView_H
+            sheetView?.width = alertMaxW
             
-            containerView?.ht_width = alertMaxW
-            containerView?.ht_height = sheetCancelActionBtn == nil ? (sheetView?.ht_height)! : (sheetView?.ht_height)! + (sheetCancelActionBtn?.ht_height)! + config.actionSheetCancelSpaceHeight
-            containerView?.ht_x = (width - alertMaxW) * 0.5
-            containerView?.ht_y = height - (containerView?.ht_height)! - config.actionSheetBottomMargin
+            containerView?.width = alertMaxW
+            containerView?.height = sheetCancelActionBtn == nil ? (sheetView?.height)! : (sheetView?.height)! + (sheetCancelActionBtn?.height)! + config.actionSheetCancelSpaceHeight
+            containerView?.x = (width - alertMaxW) * 0.5
+            containerView?.y = height - (containerView?.height)! - config.actionSheetBottomMargin
             
             if sheetCancelActionBtn != nil {
                 
-                sheetCancelSpaceView?.ht_x = 0
-                sheetCancelSpaceView?.ht_y = (sheetView?.ht_bottom)!
-                sheetCancelSpaceView?.ht_width = alertMaxW
-                sheetCancelSpaceView?.ht_height = config.actionSheetCancelSpaceHeight
+                sheetCancelSpaceView?.x = 0
+                sheetCancelSpaceView?.y = (sheetView?.bottom)!
+                sheetCancelSpaceView?.width = alertMaxW
+                sheetCancelSpaceView?.height = config.actionSheetCancelSpaceHeight
                 
-                sheetCancelActionBtn?.ht_x = 0
-                sheetCancelActionBtn?.ht_y = (sheetCancelSpaceView?.ht_bottom)!
-                sheetCancelActionBtn?.ht_width = alertMaxW
+                sheetCancelActionBtn?.x = 0
+                sheetCancelActionBtn?.y = (sheetCancelSpaceView?.bottom)!
+                sheetCancelActionBtn?.width = alertMaxW
                 sheetCancelActionBtn?.layer.cornerRadius = config.cornerRadius
                 sheetCancelActionBtn?.layer.masksToBounds = true
             }
@@ -147,43 +147,43 @@ class HTActionSheetViewController: HTAlertBaseViewController {
                 sheetView_H += config.headerInsets.top
             }
             /// 根据不同类型的view设置frame
-            if item.isKind(of: HTItemLabel.self) {
+            if item.isKind(of: ItemLabel.self) {
                 
-                let view = item as! HTItemLabel
+                let view = item as! ItemLabel
                 
-                view.ht_x = config.headerInsets.left + view.item.insets.left + viewSafeaInsets(view: view).left
-                view.ht_y = sheetView_H + view.item.insets.top
-                view.ht_width = alertMaxW - view.ht_x - config.headerInsets.right - view.item.insets.right - viewSafeaInsets(view: view).left - viewSafeaInsets(view: view).right
-                view.ht_height = item.sizeThatFits(CGSize(width: view.ht_width, height: CGFloat(MAXFLOAT))).height
+                view.x = config.headerInsets.left + view.item.insets.left + viewSafeaInsets(view: view).left
+                view.y = sheetView_H + view.item.insets.top
+                view.width = alertMaxW - view.x - config.headerInsets.right - view.item.insets.right - viewSafeaInsets(view: view).left - viewSafeaInsets(view: view).right
+                view.height = item.sizeThatFits(CGSize(width: view.width, height: CGFloat(MAXFLOAT))).height
                 
-                sheetView_H += view.ht_height + view.item.insets.top + view.item.insets.bottom
+                sheetView_H += view.height + view.item.insets.top + view.item.insets.bottom
                 
-            } else if item.isKind(of: HTItemTextField.self) {
-                let view = item as! HTItemTextField
+            } else if item.isKind(of: ItemTextField.self) {
+                let view = item as! ItemTextField
                 
-                view.ht_x = config.headerInsets.left + view.item.insets.left + viewSafeaInsets(view: view).left
-                view.ht_y = sheetView_H + view.item.insets.top
-                view.ht_width = alertMaxW - view.ht_x - config.headerInsets.right - view.item.insets.right - viewSafeaInsets(view: view).left - viewSafeaInsets(view: view).right
-                view.ht_height = 40
+                view.x = config.headerInsets.left + view.item.insets.left + viewSafeaInsets(view: view).left
+                view.y = sheetView_H + view.item.insets.top
+                view.width = alertMaxW - view.x - config.headerInsets.right - view.item.insets.right - viewSafeaInsets(view: view).left - viewSafeaInsets(view: view).right
+                view.height = 40
                 
-                sheetView_H += view.ht_height + view.item.insets.top + view.item.insets.bottom
-            } else if item.isKind(of: HTCustomView.self) {
-                let custom = item as! HTCustomView
+                sheetView_H += view.height + view.item.insets.top + view.item.insets.bottom
+            } else if item.isKind(of: CustomView.self) {
+                let custom = item as! CustomView
                 
                 if custom.isAutoWidth {
                     custom.position = .center
-                    custom.view.ht_width = alertMaxW - config.headerInsets.left - custom.item.insets.left - config.headerInsets.right - custom.item.insets.right
+                    custom.view.width = alertMaxW - config.headerInsets.left - custom.item.insets.left - config.headerInsets.right - custom.item.insets.right
                 }
                 switch custom.position {
                 case .center:
-                    custom.view.ht_x = (alertMaxW - custom.view.ht_width) / 2
+                    custom.view.x = (alertMaxW - custom.view.width) / 2
                 case .left:
-                    custom.view.ht_x = config.headerInsets.left + custom.item.insets.left
+                    custom.view.x = config.headerInsets.left + custom.item.insets.left
                 case .right:
-                    custom.view.ht_x = alertMaxW - config.headerInsets.right - custom.item.insets.right - custom.view.ht_width
+                    custom.view.x = alertMaxW - config.headerInsets.right - custom.item.insets.right - custom.view.width
                 }
-                custom.view.ht_y = sheetView_H + custom.item.insets.top
-                sheetView_H += custom.view.ht_height + custom.item.insets.top + custom.item.insets.bottom
+                custom.view.y = sheetView_H + custom.item.insets.top
+                sheetView_H += custom.view.height + custom.item.insets.top + custom.item.insets.bottom
             }
             
             if idx == sheetItemArray.count - 1 {
@@ -193,13 +193,13 @@ class HTActionSheetViewController: HTAlertBaseViewController {
         }
         for actionBtn in sheetActionArray {
             
-            actionBtn.ht_x = (actionBtn.action?.insets.left)!
+            actionBtn.x = (actionBtn.action?.insets.left)!
             
-            actionBtn.ht_y = sheetView_H + (actionBtn.action?.insets.top)!
+            actionBtn.y = sheetView_H + (actionBtn.action?.insets.top)!
             
-            actionBtn.ht_width = alertMaxW - (actionBtn.action?.insets.left)! - (actionBtn.action?.insets.right)!
+            actionBtn.width = alertMaxW - (actionBtn.action?.insets.left)! - (actionBtn.action?.insets.right)!
             
-            sheetView_H += actionBtn.ht_height + (actionBtn.action?.insets.top)! + (actionBtn.action?.insets.bottom)!
+            sheetView_H += actionBtn.height + (actionBtn.action?.insets.top)! + (actionBtn.action?.insets.bottom)!
         }
         /// 只有两个action时,横向布局成一排
         if sheetActionArray.count == 2 {
@@ -226,7 +226,7 @@ class HTActionSheetViewController: HTAlertBaseViewController {
             
         }
         sheetView?.contentSize = CGSize(width: alertMaxW, height: sheetView_H)
-        containerView?.ht_height = sheetView_H
+        containerView?.height = sheetView_H
         UIView.setAnimationsEnabled(true)
     }
     
@@ -242,10 +242,10 @@ class HTActionSheetViewController: HTAlertBaseViewController {
         
         sheetView?.layer.cornerRadius = config.cornerRadius
         
-        for (idx, obj) in (config.itemArray?.enumerated())! {
+        for (idx, obj) in config.itemArray.enumerated() {
             let itemBlock = obj
             
-            let item = HTItem()
+            let item = Item()
             
             itemBlock(item)
             
@@ -256,7 +256,7 @@ class HTActionSheetViewController: HTAlertBaseViewController {
             
             switch item.type {
             case .title:
-                let label = HTItemLabel()
+                let label = ItemLabel()
                 sheetView?.addSubview(label)
                 sheetItemArray.append(label)
                 label.textAlignment = .center
@@ -273,7 +273,7 @@ class HTActionSheetViewController: HTAlertBaseViewController {
                     self?.updateLayout()
                 }
             case .content:
-                let label = HTItemLabel()
+                let label = ItemLabel()
                 sheetView?.addSubview(label)
                 sheetItemArray.append(label)
                 label.textAlignment = .center
@@ -298,7 +298,7 @@ class HTActionSheetViewController: HTAlertBaseViewController {
 //                textField.item = item
                 break
             case .customView:
-                let custom = HTCustomView()
+                let custom = CustomView()
                 item.customViewBlock(custom)
                 sheetView?.addSubview(custom.view)
                 sheetItemArray.append(custom)
@@ -310,10 +310,10 @@ class HTActionSheetViewController: HTAlertBaseViewController {
             }
         }
         
-        for (_, obj) in (config.actionArray?.enumerated())! {
-            let action = HTAction()
+        for (_, obj) in config.actionArray.enumerated() {
+            let action = Action()
             obj(action)
-            let btn = HTActionButton()
+            let btn = ActionButton()
             if action.type == .cancel {
                 btn.addTarget(self, action: #selector(cancelAction(sender:)), for: .touchUpInside)
                 btn.backgroundColor = action.backgroundColor
@@ -356,28 +356,28 @@ class HTActionSheetViewController: HTAlertBaseViewController {
         let style = config.openAnimationStyle
         
         if style.contains(.none) {
-            containerView?.ht_x = (view.ht_width - (containerView?.ht_width)!) / 2
-            containerView?.ht_y = view.ht_width - (containerView?.ht_height)! - config.actionSheetBottomMargin
+            containerView?.x = (view.width - (containerView?.width)!) / 2
+            containerView?.y = view.width - (containerView?.height)! - config.actionSheetBottomMargin
         }
         
         if style.contains(.top) {
-            containerView?.ht_x = (view.ht_width - (containerView?.ht_width)!) / 2
-            containerView?.ht_y = -((containerView?.ht_height)!)
+            containerView?.x = (view.width - (containerView?.width)!) / 2
+            containerView?.y = -((containerView?.height)!)
         }
         
         if style.contains(.bottom) {
-            containerView?.ht_x = (view.ht_width - (containerView?.ht_width)!) / 2
-            containerView?.ht_y = view.ht_height
+            containerView?.x = (view.width - (containerView?.width)!) / 2
+            containerView?.y = view.height
         }
         
         if style.contains(.left) {
-            containerView?.ht_x = -((containerView?.ht_width)!)
-            containerView?.ht_y = view.ht_width - (containerView?.ht_height)! - config.actionSheetBottomMargin
+            containerView?.x = -((containerView?.width)!)
+            containerView?.y = view.width - (containerView?.height)! - config.actionSheetBottomMargin
         }
         
         if style.contains(.right) {
-            containerView?.ht_x = view.ht_width
-            containerView?.ht_y = view.ht_width - (containerView?.ht_height)! - config.actionSheetBottomMargin
+            containerView?.x = view.width
+            containerView?.y = view.width - (containerView?.height)! - config.actionSheetBottomMargin
         }
         
         if style.contains(.fade) {
@@ -400,8 +400,8 @@ class HTActionSheetViewController: HTAlertBaseViewController {
             case .blur:
                 self?.backgroundEffectView?.effect = UIBlurEffect(style: (self?.config.backgroundBlurStyle)!)
             }
-            self?.containerView?.ht_x = ((self?.view.ht_width)! - (self?.containerView?.ht_width)!) / 2
-            self?.containerView?.ht_y = (self?.view.ht_height)! - (self?.containerView?.ht_height)! - (self?.config.actionSheetBottomMargin)!
+            self?.containerView?.x = ((self?.view.width)! - (self?.containerView?.width)!) / 2
+            self?.containerView?.y = (self?.view.height)! - (self?.containerView?.height)! - (self?.config.actionSheetBottomMargin)!
             
             self?.containerView?.alpha = 1
             self?.containerView?.transform = .identity
@@ -444,11 +444,11 @@ class HTActionSheetViewController: HTAlertBaseViewController {
                 self?.view.backgroundColor = self?.view.backgroundColor?.withAlphaComponent(0)
             }
             
-            let view_W = (self?.view.ht_width)!
-            let view_H = (self?.view.ht_height)!
+            let view_W = (self?.view.width)!
+            let view_H = (self?.view.height)!
             
-            let container_W = (self?.containerView?.ht_width)!
-            let container_H = (self?.containerView?.ht_height)!
+            let container_W = (self?.containerView?.width)!
+            let container_H = (self?.containerView?.height)!
             
             let style = (self?.config.closeAnimationStyle)!
             
@@ -458,23 +458,23 @@ class HTActionSheetViewController: HTAlertBaseViewController {
             }
             
             if style.contains(.top) {
-                self?.containerView?.ht_x = (view_W - container_W) / 2
-                self?.containerView?.ht_y = -container_H
+                self?.containerView?.x = (view_W - container_W) / 2
+                self?.containerView?.y = -container_H
             }
             
             if style.contains(.bottom) {
-                self?.containerView?.ht_x = (view_W - container_W) / 2
-                self?.containerView?.ht_y = view_H
+                self?.containerView?.x = (view_W - container_W) / 2
+                self?.containerView?.y = view_H
             }
             
             if style.contains(.left) {
-                self?.containerView?.ht_x = -container_W
-                self?.containerView?.ht_y = (view_H - container_H) / 2
+                self?.containerView?.x = -container_W
+                self?.containerView?.y = (view_H - container_H) / 2
             }
             
             if style.contains(.right) {
-                self?.containerView?.ht_x = view_W
-                self?.containerView?.ht_y = (view_H - container_H) / 2
+                self?.containerView?.x = view_W
+                self?.containerView?.y = (view_H - container_H) / 2
             }
             
             if style.contains(.fade) {
@@ -555,7 +555,7 @@ class HTActionSheetViewController: HTAlertBaseViewController {
     }
     
     /// cancelAction的相应方法
-    @objc private func cancelAction(sender: HTActionButton) {
+    @objc private func cancelAction(sender: ActionButton) {
         close {
             
         }

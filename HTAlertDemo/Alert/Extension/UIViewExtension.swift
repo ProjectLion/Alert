@@ -1,9 +1,9 @@
 //
-//  HTUIViewExtension.swift
-//  HTDevelopTool_Swift
+//  UIViewExtension.swift
+//  AlertDemo
 //
 //  Created by HT on 2017/12/15.
-//  Copyright © 2017年 HT. All rights reserved.
+//  Copyright © 2017年 Ht. All rights reserved.
 //
 
 import Foundation
@@ -38,7 +38,7 @@ extension UIView {
     }
     
     /// view的x
-    var ht_x: CGFloat {
+    var x: CGFloat {
         get{
             return self.frame.origin.x
         }
@@ -47,7 +47,7 @@ extension UIView {
         }
     }
     /// view的y
-    var ht_y: CGFloat{
+    var y: CGFloat{
         get{
             return self.frame.origin.y
         }
@@ -56,7 +56,7 @@ extension UIView {
         }
     }
     /// view的宽
-    var ht_width: CGFloat{
+    var width: CGFloat{
         get{
             return self.frame.size.width
         }
@@ -65,7 +65,7 @@ extension UIView {
         }
     }
     /// view的高
-    var ht_height: CGFloat{
+    var height: CGFloat{
         get{
             return self.frame.size.height
         }
@@ -74,7 +74,7 @@ extension UIView {
         }
     }
     /// view的上
-    var ht_top: CGFloat{
+    var top: CGFloat{
         get{
             return self.frame.origin.y
         }
@@ -83,7 +83,7 @@ extension UIView {
         }
     }
     /// view的下
-    var ht_bottom: CGFloat{
+    var bottom: CGFloat{
         get{
             return self.frame.origin.y + self.frame.size.height
         }
@@ -92,7 +92,7 @@ extension UIView {
         }
     }
     /// view的左
-    var ht_left: CGFloat{
+    var left: CGFloat{
         get{
             return self.frame.origin.x
         }
@@ -101,7 +101,7 @@ extension UIView {
         }
     }
     /// view的右
-    var ht_right: CGFloat{
+    var right: CGFloat{
         get{
             return self.frame.origin.x + self.frame.size.width
         }
@@ -109,17 +109,8 @@ extension UIView {
             self.frame.origin.x = newValue - self.frame.size.width
         }
     }
-    /// view的中心
-    var ht_center: CGPoint{
-        get{
-            return self.center
-        }
-        set{
-            self.center = newValue
-        }
-    }
     /// view的X轴中心
-    var ht_centerX: CGFloat{
+    var centerX: CGFloat{
         get{
             return self.center.x
         }
@@ -128,7 +119,7 @@ extension UIView {
         }
     }
     /// view的Y轴中心
-    var ht_centerY: CGFloat{
+    var centerY: CGFloat{
         get{
             return self.center.y
         }
@@ -156,18 +147,13 @@ extension UIView {
         self.backgroundColor = backGroundColor
     }
     
-    /// 收尾
-    open func ht_end() {
-        
-    }
-    
     /// 添加边框、颜色及切圆角 (默认为灰色1.5宽的边框,圆角半径为5)
     ///
     /// - Parameters:
     ///   - borderWith: 边框宽
     ///   - borderColor: 边框颜色
     ///   - cornerRadius: 圆角半径
-    open func ht_add(borderWith: CGFloat = 1.5, borderColor: UIColor = .gray, cornerRadius: CGFloat = 5) -> UIView {
+    @discardableResult open func ht_add(borderWith: CGFloat = 1.5, borderColor: UIColor = .gray, cornerRadius: CGFloat = 5) -> UIView {
         self.layer.borderWidth = borderWith
         self.layer.borderColor = borderColor.cgColor
         self.layer.cornerRadius = cornerRadius

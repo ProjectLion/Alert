@@ -1,6 +1,6 @@
 //
-//  HTActionButton.swift
-//  HTAlertDemo
+//  ActionButton.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/26.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HTActionButton: UIButton {
+class ActionButton: UIButton {
     
     public var heightChangeBlock: () -> Void = {
         
@@ -27,11 +27,7 @@ class HTActionButton: UIButton {
     /// 右边框
     public var rightLayer: CALayer?
     
-    public func setAction(action: HTAction) {
-        self.action = action
-    }
-    
-    public var action: HTAction! {
+    public var action: Action! {
         didSet{
             self.clipsToBounds = true
             
@@ -40,6 +36,7 @@ class HTActionButton: UIButton {
             }
             if !action.highLightTitle.isEmpty {
                 setTitle(action.highLightTitle, for: .highlighted)
+                setTitleColor(action.highLightColor, for: .highlighted)
             }
             if !action.attributedTitle.isEqual(to: NSAttributedString(string: "")) {
                 setAttributedTitle(action.attributedTitle, for: .normal)
@@ -50,7 +47,6 @@ class HTActionButton: UIButton {
             
             titleLabel?.font = action.font
             setTitleColor(action.color, for: .normal)
-            setTitleColor(action.highLightColor, for: .highlighted)
             
             if action.type == .destructive || action.type == .cancel {
                 setTitleColor(.red, for: .normal)
@@ -117,7 +113,7 @@ class HTActionButton: UIButton {
     /// 添加边框
     ///
     /// - Parameter type: 边框位置
-    private func addBorder(type: HTAction.HTActionBorderPosition) {
+    private func addBorder(type: Action.ActionBorderPosition) {
         
         // 根据配置的边框位置类型添加边框
         if type.contains(.all) {
@@ -153,7 +149,7 @@ class HTActionButton: UIButton {
     /// 移除边框
     ///
     /// - Parameter type: 边框位置
-    private func removeBorder(type: HTAction.HTActionBorderPosition) {
+    private func removeBorder(type: Action.ActionBorderPosition) {
         
         if type.contains(.all) {
             layer.borderWidth = 0

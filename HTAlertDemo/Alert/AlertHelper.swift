@@ -1,22 +1,22 @@
 //
-//  HTAlertHelper.swift
-//  HTAlertDemo
+//  AlertHelper.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/25.
-//  Copyright © 2018年 HT. All rights reserved.
+//  Copyright © 2018年 Ht. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 /// Debug输出
-public func ht_print<T>(message: T, file: String = #file, line: Int = #line, method: String = #function) {
+public func print<T>(message: T, file: String = #file, line: Int = #line, method: String = #function) {
     #if DEBUG
     print("这里是\((file as NSString).lastPathComponent)文件的第\(line)行,\(method)方法,logMessage: \(message)")
     #endif
 }
 
-//MARK: ^^^^^^^^^^^^^^^ 全局常亮及方法 ^^^^^^^^^^^^^^^
+//MARK: ^^^^^^^^^^^^^^^ 全局常量及方法 ^^^^^^^^^^^^^^^
 /// 默认偏移量
 public let DefaultEdgInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
 /// 默认字体
@@ -31,8 +31,7 @@ public func viewSafeaInsets(view: UIView) -> UIEdgeInsets {
     if #available(iOS 11, *) {
         return view.safeAreaInsets
     } else {
-//        return .zero //这样写Xcode会找不到项目。。？？？
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return .zero
     }
 }
 /**************************/
@@ -57,17 +56,15 @@ typealias ConfigToSize = (CGSize) -> Void
 
 typealias ConfigToEdgeInsets = (UIEdgeInsets) -> Void
 
-//typealias ConfigToAnimationStyle = (HTAnimationStyle) -> Void
-
 typealias ConfigToEffectStyle = (UIBlurEffect.Style) -> Void
 
 typealias ConfigToInterfaceOrientationMask = (UIInterfaceOrientationMask) -> Void
 
-typealias ConfigToCGFloatBlock = (HTScreenOrientationType) -> CGFloat
+typealias ConfigToCGFloatBlock = (ScreenOrientationType) -> CGFloat
 
-typealias ConfigToAction = (HTAction) -> Void
+typealias ConfigToAction = (Action) -> Void
 
-typealias ConfigToCustomView = (HTCustomView) -> Void
+typealias ConfigToCustomView = (CustomView) -> Void
 
 typealias ConfigToStringAndBlock = (String, () -> Void) -> Void
 
@@ -75,7 +72,7 @@ typealias ConfigToLabel = (UILabel) -> Void
 
 typealias ConfigToTextField = (UITextField) -> Void
 
-typealias ConfigToItem = (HTItem) -> Void
+typealias ConfigToItem = (Item) -> Void
 
 typealias ConfigToBlock = () -> Void
 
@@ -86,7 +83,7 @@ typealias ConfigToBlockAndBlock = (_ animatingBlock: () -> Void,_ animatedBlock:
 //MARK: ^^^^^^^^^^^^^^^ 枚举 ^^^^^^^^^^^^^^^
 
 /// 背景样式
-public enum HTBackgroundStyle {
+public enum BackgroundStyle {
     /// 模糊
     case blur
     /// 半透明
@@ -94,7 +91,7 @@ public enum HTBackgroundStyle {
 }
 
 /// 自定义view的位置
-public enum HTCustomViewPosition {
+public enum CustomViewPosition {
     /// 居中
     case center
     /// 居左
@@ -104,13 +101,13 @@ public enum HTCustomViewPosition {
 }
 
 /// alert类型
-public enum HTAlertType {
+public enum AlertType {
     case alert
     case sheet
 }
 
 /// 屏幕方向
-public enum HTScreenOrientationType {
+public enum ScreenOrientationType {
     /// 横屏
     case horizontal
     /// 竖屏

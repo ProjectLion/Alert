@@ -1,6 +1,6 @@
 //
-//  HTAlertViewController.swift
-//  HTAlertDemo
+//  AlertViewController.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/26.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HTAlertViewController: HTAlertBaseViewController {
+class AlertViewController: AlertBaseViewController {
     
     private var containerView: UIView?
     
@@ -17,8 +17,8 @@ class HTAlertViewController: HTAlertBaseViewController {
         return arr
     }()
     
-    private var alertActionArray: Array<HTActionButton> = {
-        let arr = Array<HTActionButton>()
+    private var alertActionArray: Array<ActionButton> = {
+        let arr = Array<ActionButton>()
         return arr
     }()
     
@@ -38,7 +38,7 @@ class HTAlertViewController: HTAlertBaseViewController {
     private var isShowingKeyborder = false
     
     deinit {
-        ht_print(message: "HTAlertViewController deinit")
+        print(message: "AlertViewController deinit")
         alertView = nil
         containerView = nil
     }
@@ -90,28 +90,28 @@ class HTAlertViewController: HTAlertBaseViewController {
                 let tempAlertViewH = keyborderY - alertView_H < 20 ? keyborderY - 20 : alertView_H
                 let tempAlertViewY = keyborderY - tempAlertViewH - 10
                 
-                let originalAlertViewY = (height - (alertView?.ht_height)!) * 0.5
+                let originalAlertViewY = (height - (alertView?.height)!) * 0.5
                 
-                alertView?.ht_height = tempAlertViewH
-                alertView?.ht_width = alertMaxW
+                alertView?.height = tempAlertViewH
+                alertView?.width = alertMaxW
                 
-                containerView?.ht_width = (alertView?.ht_width)!
-                containerView?.ht_height = (alertView?.ht_height)!
-                containerView?.ht_x = (width - alertMaxW) * 0.5
-                containerView?.ht_y = tempAlertViewY < originalAlertViewY ? tempAlertViewY : originalAlertViewY
+                containerView?.width = (alertView?.width)!
+                containerView?.height = (alertView?.height)!
+                containerView?.x = (width - alertMaxW) * 0.5
+                containerView?.y = tempAlertViewY < originalAlertViewY ? tempAlertViewY : originalAlertViewY
                 
                 alertView?.scrollRectToVisible((findFirstResponder(view: alertView!)?.frame)!, animated: true)
             }
         } else {
             updateAlertItemsLayout()
             
-            alertView?.ht_height = alertView_H > alertMaxH ? alertMaxH : alertView_H
-            alertView?.ht_width = alertMaxW
+            alertView?.height = alertView_H > alertMaxH ? alertMaxH : alertView_H
+            alertView?.width = alertMaxW
             
-            containerView?.ht_width = (alertView?.ht_width)!
-            containerView?.ht_height = (alertView?.ht_height)!
-            containerView?.ht_x = (width - alertMaxW) * 0.5
-            containerView?.ht_y = (height - (alertView?.ht_height)!) * 0.5
+            containerView?.width = (alertView?.width)!
+            containerView?.height = (alertView?.height)!
+            containerView?.x = (width - alertMaxW) * 0.5
+            containerView?.y = (height - (alertView?.height)!) * 0.5
         }
     }
     
@@ -125,43 +125,43 @@ class HTAlertViewController: HTAlertBaseViewController {
                 alertView_H += config.headerInsets.top
             }
             /// 根据不同类型的view设置frame
-            if item.isKind(of: HTItemLabel.self) {
+            if item.isKind(of: ItemLabel.self) {
                 
-                let view = item as! HTItemLabel
+                let view = item as! ItemLabel
                 
-                view.ht_x = config.headerInsets.left + view.item.insets.left + viewSafeaInsets(view: view).left
-                view.ht_y = alertView_H + view.item.insets.top
-                view.ht_width = alertMaxW - view.ht_x - config.headerInsets.right - view.item.insets.right - viewSafeaInsets(view: view).left - viewSafeaInsets(view: view).right
-                view.ht_height = item.sizeThatFits(CGSize(width: view.ht_width, height: CGFloat(MAXFLOAT))).height
+                view.x = config.headerInsets.left + view.item.insets.left + viewSafeaInsets(view: view).left
+                view.y = alertView_H + view.item.insets.top
+                view.width = alertMaxW - view.x - config.headerInsets.right - view.item.insets.right - viewSafeaInsets(view: view).left - viewSafeaInsets(view: view).right
+                view.height = item.sizeThatFits(CGSize(width: view.width, height: CGFloat(MAXFLOAT))).height
                 
-                alertView_H += view.ht_height + view.item.insets.top + view.item.insets.bottom
+                alertView_H += view.height + view.item.insets.top + view.item.insets.bottom
                 
-            } else if item.isKind(of: HTItemTextField.self) {
-                let view = item as! HTItemTextField
+            } else if item.isKind(of: ItemTextField.self) {
+                let view = item as! ItemTextField
                 
-                view.ht_x = config.headerInsets.left + view.item.insets.left + viewSafeaInsets(view: view).left
-                view.ht_y = alertView_H + view.item.insets.top
-                view.ht_width = alertMaxW - view.ht_x - config.headerInsets.right - view.item.insets.right - viewSafeaInsets(view: view).left - viewSafeaInsets(view: view).right
-                view.ht_height = 40
+                view.x = config.headerInsets.left + view.item.insets.left + viewSafeaInsets(view: view).left
+                view.y = alertView_H + view.item.insets.top
+                view.width = alertMaxW - view.x - config.headerInsets.right - view.item.insets.right - viewSafeaInsets(view: view).left - viewSafeaInsets(view: view).right
+                view.height = 40
                 
-                alertView_H += view.ht_height + view.item.insets.top + view.item.insets.bottom
-            } else if item.isKind(of: HTCustomView.self) {
-                let custom = item as! HTCustomView
+                alertView_H += view.height + view.item.insets.top + view.item.insets.bottom
+            } else if item.isKind(of: CustomView.self) {
+                let custom = item as! CustomView
                 
                 if custom.isAutoWidth {
                     custom.position = .center
-                    custom.view.ht_width = alertMaxW - config.headerInsets.left - custom.item.insets.left - config.headerInsets.right - custom.item.insets.right
+                    custom.view.width = alertMaxW - config.headerInsets.left - custom.item.insets.left - config.headerInsets.right - custom.item.insets.right
                 }
                 switch custom.position {
                 case .center:
-                    custom.view.ht_x = (alertMaxW - custom.view.ht_width) / 2
+                    custom.view.x = (alertMaxW - custom.view.width) / 2
                 case .left:
-                    custom.view.ht_x = config.headerInsets.left + custom.item.insets.left
+                    custom.view.x = config.headerInsets.left + custom.item.insets.left
                 case .right:
-                    custom.view.ht_x = alertMaxW - config.headerInsets.right - custom.item.insets.right - custom.view.ht_width
+                    custom.view.x = alertMaxW - config.headerInsets.right - custom.item.insets.right - custom.view.width
                 }
-                custom.view.ht_y = alertView_H + custom.item.insets.top
-                alertView_H += custom.view.ht_height + custom.item.insets.top + custom.item.insets.bottom
+                custom.view.y = alertView_H + custom.item.insets.top
+                alertView_H += custom.view.height + custom.item.insets.top + custom.item.insets.bottom
             }
             
             if idx == alertItemArray.count - 1 {
@@ -171,40 +171,40 @@ class HTAlertViewController: HTAlertBaseViewController {
         }
         for actionBtn in alertActionArray {
             
-            actionBtn.ht_x = (actionBtn.action?.insets.left)!
+            actionBtn.x = (actionBtn.action?.insets.left)!
             
-            actionBtn.ht_y = alertView_H + (actionBtn.action?.insets.top)!
+            actionBtn.y = alertView_H + (actionBtn.action?.insets.top)!
             
-            actionBtn.ht_width = alertMaxW - (actionBtn.action?.insets.left)! - (actionBtn.action?.insets.right)!
+            actionBtn.width = alertMaxW - (actionBtn.action?.insets.left)! - (actionBtn.action?.insets.right)!
             
-            alertView_H += actionBtn.ht_height + (actionBtn.action?.insets.top)! + (actionBtn.action?.insets.bottom)!
+            alertView_H += actionBtn.height + (actionBtn.action?.insets.top)! + (actionBtn.action?.insets.bottom)!
         }
         /// 只有两个action时,横向布局成一排
         if alertActionArray.count == 2 {
-            let btnA = alertActionArray.count == config.actionArray?.count ? alertActionArray.first : alertActionArray.last
-            let btnB = alertActionArray.count == config.actionArray?.count ? alertActionArray.last : alertActionArray.first
+            let btnA = (alertActionArray.count == config.actionArray.count) ? alertActionArray.first : alertActionArray.last
+            let btnB = (alertActionArray.count == config.actionArray.count) ? alertActionArray.last : alertActionArray.first
             
             let btnAInsets = (btnA?.action?.insets)!
             let btnBInsets = (btnB?.action?.insets)!
             
-            let btnA_H = (btnA?.ht_height)! + btnAInsets.top + btnAInsets.bottom
-            let btnB_H = (btnB?.ht_height)! + btnBInsets.top + btnBInsets.bottom
+            let btnA_H = (btnA?.height)! + btnAInsets.top + btnAInsets.bottom
+            let btnB_H = (btnB?.height)! + btnBInsets.top + btnBInsets.bottom
             
             let min_H = btnA_H < btnB_H ? btnA_H : btnB_H
             
-            let min_Y = ((btnA?.ht_y)! - btnAInsets.top) > ((btnB?.ht_y)! - btnBInsets.top) ? ((btnB?.ht_y)! - btnBInsets.top) : ((btnA?.ht_y)! - btnAInsets.top)
+            let min_Y = ((btnA?.y)! - btnAInsets.top) > ((btnB?.y)! - btnBInsets.top) ? ((btnB?.y)! - btnBInsets.top) : ((btnA?.y)! - btnAInsets.top)
             
             btnA?.action.borderPosition = .right
             
-            btnA?.frame = CGRect(x: btnAInsets.left, y: min_Y + btnAInsets.top, width: alertMaxW / 2 - btnAInsets.left - btnAInsets.right, height: (btnA?.ht_height)!)
+            btnA?.frame = CGRect(x: btnAInsets.left, y: min_Y + btnAInsets.top, width: alertMaxW / 2 - btnAInsets.left - btnAInsets.right, height: (btnA?.height)!)
             
-            btnB?.frame = CGRect(x: alertMaxW / 2 + btnBInsets.left, y: min_Y + btnBInsets.top, width: alertMaxW / 2 - btnBInsets.left - btnBInsets.right, height: (btnB?.ht_height)!)
+            btnB?.frame = CGRect(x: alertMaxW / 2 + btnBInsets.left, y: min_Y + btnBInsets.top, width: alertMaxW / 2 - btnBInsets.left - btnBInsets.right, height: (btnB?.height)!)
 //            btnB?.act
             alertView_H -= min_H
             
         }
         alertView?.contentSize = CGSize(width: alertMaxW, height: alertView_H)
-        containerView?.ht_height = alertView_H
+        containerView?.height = alertView_H
         UIView.setAnimationsEnabled(true)
     }
     
@@ -220,10 +220,10 @@ class HTAlertViewController: HTAlertBaseViewController {
         
         alertView?.layer.cornerRadius = config.cornerRadius
         
-        for (idx, obj) in (config.itemArray?.enumerated())! {
+        for (idx, obj) in config.itemArray.enumerated() {
             let itemBlock = obj
             
-            let item = HTItem()
+            let item = Item()
             
             itemBlock(item)
             
@@ -234,7 +234,7 @@ class HTAlertViewController: HTAlertBaseViewController {
             
             switch item.type {
             case .title:
-                let label = HTItemLabel()
+                let label = ItemLabel()
                 alertView?.addSubview(label)
                 alertItemArray.append(label)
                 label.textAlignment = .center
@@ -251,7 +251,7 @@ class HTAlertViewController: HTAlertBaseViewController {
                     self?.updateLayout()
                 }
             case .content:
-                let label = HTItemLabel()
+                let label = ItemLabel()
                 alertView?.addSubview(label)
                 alertItemArray.append(label)
                 label.textAlignment = .center
@@ -268,14 +268,14 @@ class HTAlertViewController: HTAlertBaseViewController {
                     self?.updateLayout()
                 }
             case .textField:
-                let textField = HTItemTextField()
+                let textField = ItemTextField()
                 alertView?.addSubview(textField)
                 alertItemArray.append(textField)
                 textField.borderStyle = .roundedRect
                 item.textFieldBlock(textField)
                 textField.item = item
             case .customView:
-                let custom = HTCustomView()
+                let custom = CustomView()
                 item.customViewBlock(custom)
                 alertView?.addSubview(custom.view)
                 alertItemArray.append(custom)
@@ -287,14 +287,14 @@ class HTAlertViewController: HTAlertBaseViewController {
             }
         }
         
-        for (idx, obj) in (config.actionArray?.enumerated())! {
-            let action = HTAction()
+        for (idx, obj) in config.actionArray.enumerated() {
+            let action = Action()
             obj(action)
 
-            let btn = HTActionButton()
+            let btn = ActionButton()
             
             if action.borderPosition.rawValue == 1 {
-                if config.actionArray?.count == 2 {
+                if config.actionArray.count == 2 {
                     // 修复只有两个action项时，右边action有右边框的bug
                     if idx == 0 {
                         action.borderPosition = [.top, .right]
@@ -335,28 +335,28 @@ class HTAlertViewController: HTAlertBaseViewController {
         let style = config.openAnimationStyle
         
         if style.contains(.none) {
-            containerView?.ht_x = (view.ht_width - (containerView?.ht_width)!) / 2
-            containerView?.ht_y = (view.ht_height - (containerView?.ht_height)!) / 2
+            containerView?.x = (view.width - (containerView?.width)!) / 2
+            containerView?.y = (view.height - (containerView?.height)!) / 2
         }
         
         if style.contains(.top) {
-            containerView?.ht_x = (view.ht_width - (containerView?.ht_width)!) / 2
-            containerView?.ht_y = -((containerView?.ht_height)!)
+            containerView?.x = (view.width - (containerView?.width)!) / 2
+            containerView?.y = -((containerView?.height)!)
         }
         
         if style.contains(.bottom) {
-            containerView?.ht_x = (view.ht_width - (containerView?.ht_width)!) / 2
-            containerView?.ht_y = view.ht_height
+            containerView?.x = (view.width - (containerView?.width)!) / 2
+            containerView?.y = view.height
         }
         
         if style.contains(.left) {
-            containerView?.ht_x = -((containerView?.ht_width)!)
-            containerView?.ht_y = (view.ht_height - (containerView?.ht_height)!) / 2
+            containerView?.x = -((containerView?.width)!)
+            containerView?.y = (view.height - (containerView?.height)!) / 2
         }
         
         if style.contains(.right) {
-            containerView?.ht_x = view.ht_width
-            containerView?.ht_y = (view.ht_height - (containerView?.ht_height)!) / 2
+            containerView?.x = view.width
+            containerView?.y = (view.height - (containerView?.height)!) / 2
         }
         
         if style.contains(.fade) {
@@ -400,8 +400,8 @@ class HTAlertViewController: HTAlertBaseViewController {
             case .blur:
                 self?.backgroundEffectView?.effect = UIBlurEffect(style: (self?.config.backgroundBlurStyle)!)
             }
-            self?.containerView?.ht_x = ((self?.view.ht_width)! - (self?.containerView?.ht_width)!) / 2
-            self?.containerView?.ht_y = ((self?.view.ht_height)! - (self?.containerView?.ht_height)!) / 2
+            self?.containerView?.x = ((self?.view.width)! - (self?.containerView?.width)!) / 2
+            self?.containerView?.y = ((self?.view.height)! - (self?.containerView?.height)!) / 2
             
             self?.containerView?.alpha = 1
             self?.containerView?.transform = .identity
@@ -444,11 +444,11 @@ class HTAlertViewController: HTAlertBaseViewController {
                 self?.view.backgroundColor = self?.view.backgroundColor?.withAlphaComponent(0)
             }
             
-            let view_W = (self?.view.ht_width)!
-            let view_H = (self?.view.ht_height)!
+            let view_W = (self?.view.width)!
+            let view_H = (self?.view.height)!
             
-            let container_W = (self?.containerView?.ht_width)!
-            let container_H = (self?.containerView?.ht_height)!
+            let container_W = (self?.containerView?.width)!
+            let container_H = (self?.containerView?.height)!
             
             let style = (self?.config.closeAnimationStyle)!
             
@@ -458,23 +458,23 @@ class HTAlertViewController: HTAlertBaseViewController {
             }
             
             if style.contains(.top) {
-                self?.containerView?.ht_x = (view_W - container_W) / 2
-                self?.containerView?.ht_y = -container_H
+                self?.containerView?.x = (view_W - container_W) / 2
+                self?.containerView?.y = -container_H
             }
             
             if style.contains(.bottom) {
-                self?.containerView?.ht_x = (view_W - container_W) / 2
-                self?.containerView?.ht_y = view_H
+                self?.containerView?.x = (view_W - container_W) / 2
+                self?.containerView?.y = view_H
             }
             
             if style.contains(.left) {
-                self?.containerView?.ht_x = -container_W
-                self?.containerView?.ht_y = (view_H - container_H) / 2
+                self?.containerView?.x = -container_W
+                self?.containerView?.y = (view_H - container_H) / 2
             }
             
             if style.contains(.right) {
-                self?.containerView?.ht_x = view_W
-                self?.containerView?.ht_y = (view_H - container_H) / 2
+                self?.containerView?.x = view_W
+                self?.containerView?.y = (view_H - container_H) / 2
             }
             
             if style.contains(.fade) {

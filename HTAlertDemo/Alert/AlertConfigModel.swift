@@ -1,70 +1,43 @@
 //
-//  HTAlertConfigModel.swift
-//  HTAlertDemo
+//  AlertConfigModel.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/25.
-//  Copyright © 2018年 HT. All rights reserved.
+//  Copyright © 2018年 Ht. All rights reserved.
 //
 
 import UIKit
 
 /// 配置模型管理类
-class HTAlertConfigModel: NSObject {
-    
-//    /// 动画位置
-//    public enum HTAnimationStyle {
-//        /// 默认()
-//        case none
-//        /// 上
-//        case top
-//        /// 下
-//        case bottom
-//        /// 左
-//        case left
-//        /// 右
-//        case right
-//        /// 淡出淡入
-//        case fade
-//        /// 放大
-//        case magnify
-//        /// 缩小
-//        case shrink
-//    }
+class AlertConfigModel: NSObject {
     /// 动画类型
-    public struct HTAnimationStyle: OptionSet {
+    public struct AnimationStyle: OptionSet {
         
         public let rawValue: Int
         /// 默认
-        public static var none = HTAnimationStyle(rawValue: 1)
+        public static var none = AnimationStyle(rawValue: 1)
         /// 上
-        public static var top = HTAnimationStyle(rawValue: 2)
+        public static var top = AnimationStyle(rawValue: 2)
         /// 下
-        public static var bottom = HTAnimationStyle(rawValue: 4)
+        public static var bottom = AnimationStyle(rawValue: 4)
         /// 左
-        public static var left = HTAnimationStyle(rawValue: 8)
+        public static var left = AnimationStyle(rawValue: 8)
         /// 右
-        public static var right = HTAnimationStyle(rawValue: 32)
+        public static var right = AnimationStyle(rawValue: 32)
         /// 淡出淡入
-        public static var fade = HTAnimationStyle(rawValue: 64)
+        public static var fade = AnimationStyle(rawValue: 64)
         /// 放大
-        public static var magnify = HTAnimationStyle(rawValue: 128)
+        public static var magnify = AnimationStyle(rawValue: 128)
         /// 缩小
-        public static var shrink = HTAnimationStyle(rawValue: 256)
+        public static var shrink = AnimationStyle(rawValue: 256)
         
     }
     
     /*****      publicProperties      ******/
     
-    public lazy var actionArray: [ConfigToAction]? = {
-        let arr: [ConfigToAction] = []
-        
-        return arr
-    }()
+    public var actionArray: [ConfigToAction] = []
     
-    public lazy var itemArray: [ConfigToItem]? = {
-        let arr: [ConfigToItem] = []
-        return arr
-    }()
+    public var itemArray: [ConfigToItem] = []
     
     public lazy var itemInsetsInfo: Dictionary<String, UIEdgeInsets> = {
         let dict: Dictionary<String, UIEdgeInsets> = [:]
@@ -90,7 +63,7 @@ class HTAlertConfigModel: NSObject {
     public var headerColor: UIColor = .white
     
     /// 背景样式 默认 半透明 translucent
-    public var backgroundStyle: HTBackgroundStyle = .translucent
+    public var backgroundStyle: BackgroundStyle = .translucent
     
     /// 背景模糊效果 默认 drak
     public var backgroundBlurStyle: UIBlurEffect.Style = .dark
@@ -149,13 +122,13 @@ class HTAlertConfigModel: NSObject {
     /// alert支持显示的方向 默认 所有方向
     public var supportedInterfaceOrientations = UIInterfaceOrientationMask.all
     
-    /// 最大宽度回调 (默认值是在HTAlertConfig.Swfit文件的# line 75 的方法中设置的)
+    /// 最大宽度回调 (默认值是在AlertConfig.Swfit文件的# line 75 的方法中设置的)
     public var maxWidth: ConfigToCGFloatBlock = {
         type in
         return 0
     }
     
-    /// 最大高度回调 (默认值是在HTAlertConfig.Swfit文件的# line 75 的方法中设置的)
+    /// 最大高度回调 (默认值是在AlertConfig.Swfit文件的# line 75 的方法中设置的)
     public var maxHeight: ConfigToCGFloatBlock = {
         type in
         return 0
@@ -172,10 +145,10 @@ class HTAlertConfigModel: NSObject {
     }
     
     /// 开启动画类型
-    public var openAnimationStyle: HTAlertConfigModel.HTAnimationStyle = [.fade, .none, .magnify]
+    public var openAnimationStyle: AlertConfigModel.AnimationStyle = [.fade, .none, .magnify]
     
     /// 关闭动画类型
-    public var closeAnimationStyle: HTAlertConfigModel.HTAnimationStyle = [.fade, .none, .shrink]
+    public var closeAnimationStyle: AlertConfigModel.AnimationStyle = [.fade, .none, .shrink]
     
     /// 配置完成回调
     public var configFinish: () -> Void = {
@@ -187,8 +160,8 @@ class HTAlertConfigModel: NSObject {
         
     }
     
-    /// 标识符 默认 "HTAlert_Identifier"
-    public var identifier = "HTAlert_Identifier"
+    /// 标识符 默认 "Alert_Identifier"
+    public var identifier = "Alert_Identifier"
     
     /**************************/
     
@@ -217,22 +190,22 @@ class HTAlertConfigModel: NSObject {
         }
     }
     deinit {
-        ht_print(message: "HTAlertConfigModel对象销毁了")
-        actionArray = nil
-        itemArray = nil
+        print(message: "AlertConfigModel对象销毁了")
+        actionArray.removeAll()
+        itemArray.removeAll()
     }
     
 }
 
 //MARK: ^^^^^^^^^^^^^^^ publicMethod ^^^^^^^^^^^^^^^
 
-extension HTAlertConfigModel {
+extension AlertConfigModel {
     
     /// 设置标题
     ///
     /// - Parameter title: 标题
     /// - Returns: self
-    @discardableResult public func title(_ title: String) -> HTAlertConfigModel {
+    @discardableResult public func title(_ title: String) -> AlertConfigModel {
         addTitle { (label) in
             label.text = title
             label.textColor = .darkGray
@@ -245,7 +218,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter content: 内容
     /// - Returns: self
-    @discardableResult public func content(_ content: String) -> HTAlertConfigModel {
+    @discardableResult public func content(_ content: String) -> AlertConfigModel {
         addContent { (label) in
             label.text = content
             label.textColor = .gray
@@ -258,7 +231,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter view: 自定义视图对象 UIView
     /// - Returns: self
-    @discardableResult public func customView(_ view: UIView) -> HTAlertConfigModel {
+    @discardableResult public func customView(_ view: UIView) -> AlertConfigModel {
         addCustomView { (custom) in
             custom.view = view
             custom.position = .center
@@ -273,7 +246,7 @@ extension HTAlertConfigModel {
     ///   - title: action标题
     ///   - block: action点击事件的回调
     /// - Returns: self
-    @discardableResult public func action(_ title: String, block: @escaping () -> Void) -> HTAlertConfigModel {
+    @discardableResult public func action(_ title: String, block: @escaping () -> Void) -> AlertConfigModel {
         addAction { (action) in
             action.type = .defualt
             action.title = title
@@ -289,7 +262,7 @@ extension HTAlertConfigModel {
     ///   - title: 取消类型action的标题
     ///   - block: 点击事件的回调
     /// - Returns: self
-    @discardableResult public func cancelAction(_ title: String, block: @escaping () -> Void) -> HTAlertConfigModel {
+    @discardableResult public func cancelAction(_ title: String, block: @escaping () -> Void) -> AlertConfigModel {
         addAction { (action) in
             action.type = .cancel
             action.title = title
@@ -305,7 +278,7 @@ extension HTAlertConfigModel {
     ///   - title: 销毁类型action的标题
     ///   - block: 点击事件的回调
     /// - Returns: self
-    @discardableResult public func destructiveAction(_ title: String, block: @escaping () -> Void) -> HTAlertConfigModel {
+    @discardableResult public func destructiveAction(_ title: String, block: @escaping () -> Void) -> AlertConfigModel {
         addAction { (action) in
             action.type = .destructive
             action.title = title
@@ -319,7 +292,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter insets: UIEdgeInsets对象
     /// - Returns: self
-    @discardableResult public func headerInsets(_ insets: UIEdgeInsets) -> HTAlertConfigModel {
+    @discardableResult public func headerInsets(_ insets: UIEdgeInsets) -> AlertConfigModel {
         var tempInsets = insets
         if tempInsets.top < 0 { tempInsets.top = 0 }
         if tempInsets.bottom < 0 { tempInsets.bottom = 0 }
@@ -334,19 +307,17 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter insets: UIEdgeInsets对象
     /// - Returns: self
-    @discardableResult public func itemInsets(_ insets: UIEdgeInsets) -> HTAlertConfigModel {
-        if let arr = itemArray {
-            if !arr.isEmpty {
-                var tempInsets = insets
-                if tempInsets.top < 0 { tempInsets.top = 0 }
-                if tempInsets.bottom < 0 { tempInsets.bottom = 0 }
-                if tempInsets.left < 0 { tempInsets.left = 0 }
-                if tempInsets.right < 0 { tempInsets.right = 0 }
-//                itemInsetsInfo.updateValue(tempInsets, forKey: "\(arr.count - 1)")
-                itemInsetsInfo["\(arr.count-1)"] = tempInsets
-            } else {
-                assert(true, "请在添加的某一项后面设置间距")
-            }
+    @discardableResult public func itemInsets(_ insets: UIEdgeInsets) -> AlertConfigModel {
+        if !itemArray.isEmpty {
+            var tempInsets = insets
+            if tempInsets.top < 0 { tempInsets.top = 0 }
+            if tempInsets.bottom < 0 { tempInsets.bottom = 0 }
+            if tempInsets.left < 0 { tempInsets.left = 0 }
+            if tempInsets.right < 0 { tempInsets.right = 0 }
+            //                itemInsetsInfo.updateValue(tempInsets, forKey: "\(arr.count - 1)")
+            itemInsetsInfo["\(itemArray.count-1)"] = tempInsets
+        } else {
+            assert(true, "请在添加的某一项后面设置间距")
         }
         return self
     }
@@ -356,7 +327,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter block: 回调
     /// - Returns: self
-    @discardableResult public func configMaxWidth(block: @escaping ConfigToCGFloatBlock) -> HTAlertConfigModel {
+    @discardableResult public func configMaxWidth(block: @escaping ConfigToCGFloatBlock) -> AlertConfigModel {
         maxWidth = block
         return self
     }
@@ -366,7 +337,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter block: 回调
     /// - Returns: self
-    @discardableResult public func configMaxHeight(block: @escaping ConfigToCGFloatBlock) -> HTAlertConfigModel {
+    @discardableResult public func configMaxHeight(block: @escaping ConfigToCGFloatBlock) -> AlertConfigModel {
         maxHeight = block
         return self
     }
@@ -376,7 +347,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter width: 最大宽度值
     /// - Returns: self
-    @discardableResult public func maxWidth(_ width: CGFloat) -> HTAlertConfigModel {
+    @discardableResult public func maxWidth(_ width: CGFloat) -> AlertConfigModel {
         configMaxWidth { (type) -> CGFloat in
             return width
         }
@@ -388,7 +359,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter hieght: 最大高度值
     /// - Returns: self
-    @discardableResult public func maxHeight(_ height: CGFloat) -> HTAlertConfigModel {
+    @discardableResult public func maxHeight(_ height: CGFloat) -> AlertConfigModel {
         configMaxHeight { (type) -> CGFloat in
             return height
         }
@@ -400,7 +371,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter radius: 半径大小
     /// - Returns: self
-    @discardableResult public func cornerRadius(_ radius: CGFloat) -> HTAlertConfigModel {
+    @discardableResult public func cornerRadius(_ radius: CGFloat) -> AlertConfigModel {
         cornerRadius = radius
         return self
     }
@@ -409,7 +380,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter color: 颜色 UIColor对象
     /// - Returns: self
-    @discardableResult public func headerColor(_ color: UIColor) -> HTAlertConfigModel {
+    @discardableResult public func headerColor(_ color: UIColor) -> AlertConfigModel {
         headerColor = color
         return self
     }
@@ -418,7 +389,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter color: UIColor对象
     /// - Returns: self
-    @discardableResult public func backgroundColor(_ color: UIColor) -> HTAlertConfigModel {
+    @discardableResult public func backgroundColor(_ color: UIColor) -> AlertConfigModel {
         backgroundColor = color
         return self
     }
@@ -427,7 +398,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter alpha: 透明度
     /// - Returns: self
-    @discardableResult public func backgroundStyleTranslucent(_ alpha: CGFloat) -> HTAlertConfigModel {
+    @discardableResult public func backgroundStyleTranslucent(_ alpha: CGFloat) -> AlertConfigModel {
         backgroundStyle = .translucent
         backgroundStyleColorAlpha = alpha
         return self
@@ -437,7 +408,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter style: 样式 (Swift 4.2 UIBlurEffect.Style--- Swift 4.1 UIBlurEffectStyle)
     /// - Returns: self
-    @discardableResult public func backgroundStyleBlur(_ style: UIBlurEffect.Style) -> HTAlertConfigModel {
+    @discardableResult public func backgroundStyleBlur(_ style: UIBlurEffect.Style) -> AlertConfigModel {
         backgroundStyle = .blur
         backgroundBlurStyle = style
         return self
@@ -447,7 +418,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter bool: false or true
     /// - Returns: self
-    @discardableResult public func isClickHeaderClose(_ bool: Bool) -> HTAlertConfigModel {
+    @discardableResult public func isClickHeaderClose(_ bool: Bool) -> AlertConfigModel {
         isClickHeaderClose = bool
         return self
     }
@@ -456,7 +427,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter bool: false or true
     /// - Returns: self
-    @discardableResult public func isClickBackgroundClose(_ bool: Bool) -> HTAlertConfigModel {
+    @discardableResult public func isClickBackgroundClose(_ bool: Bool) -> AlertConfigModel {
         isClickBackgroundClose = bool
         return self
     }
@@ -469,7 +440,7 @@ extension HTAlertConfigModel {
     ///   - radius: 圆角半径
     ///   - color: 颜色
     /// - Returns: self
-    @discardableResult public func shadow(_ offset: CGSize, _ opacity: Float, _ radius: CGFloat, _ color: UIColor) -> HTAlertConfigModel {
+    @discardableResult public func shadow(_ offset: CGSize, _ opacity: Float, _ radius: CGFloat, _ color: UIColor) -> AlertConfigModel {
         shadowOffset = offset
         shadowOpacity = opacity
         shadowRadius = radius
@@ -481,7 +452,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter size: 偏移大小
     /// - Returns: self
-    @discardableResult public func shadowOffset(_ size: CGSize) -> HTAlertConfigModel {
+    @discardableResult public func shadowOffset(_ size: CGSize) -> AlertConfigModel {
         shadowOffset = size
         return self
     }
@@ -490,7 +461,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter opacity: 透明度
     /// - Returns: self
-    @discardableResult public func shadowOpacity(_ opacity: Float) -> HTAlertConfigModel {
+    @discardableResult public func shadowOpacity(_ opacity: Float) -> AlertConfigModel {
         if opacity > 1 {
             shadowOpacity = 1
         } else if opacity < 0 {
@@ -505,7 +476,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter color: 颜色
     /// - Returns: self
-    @discardableResult public func shadowColor(_ color: UIColor) -> HTAlertConfigModel {
+    @discardableResult public func shadowColor(_ color: UIColor) -> AlertConfigModel {
         shadowColor = color
         return self
     }
@@ -514,7 +485,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter radius: 半径
     /// - Returns: self
-    @discardableResult public func shadowRadius(_ radius: CGFloat) -> HTAlertConfigModel {
+    @discardableResult public func shadowRadius(_ radius: CGFloat) -> AlertConfigModel {
         shadowRadius = radius
         return self
     }
@@ -523,7 +494,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter id: 标识符
     /// - Returns: self
-    @discardableResult public func identifier(_ id: String) -> HTAlertConfigModel {
+    @discardableResult public func identifier(_ id: String) -> AlertConfigModel {
         identifier = id
         return self
     }
@@ -532,7 +503,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter bool: 是否加入队列
     /// - Returns: self
-    @discardableResult public func queue(_ bool: Bool) -> HTAlertConfigModel {
+    @discardableResult public func queue(_ bool: Bool) -> AlertConfigModel {
         isQueue = bool
         return self
     }
@@ -541,7 +512,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter level: 优先级
     /// - Returns: self
-    @discardableResult public func queuePriority(_ level: Int) -> HTAlertConfigModel {
+    @discardableResult public func queuePriority(_ level: Int) -> AlertConfigModel {
         queuePriorty = level
         return self
     }
@@ -550,7 +521,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter bool: 是否继续队列显示
     /// - Returns: self
-    @discardableResult public func continueQueueDisplay(_ bool: Bool) -> HTAlertConfigModel {
+    @discardableResult public func continueQueueDisplay(_ bool: Bool) -> AlertConfigModel {
         isContinueQueueDisplay = bool
         return self
     }
@@ -559,7 +530,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter level: 层级
     /// - Returns: self
-    @discardableResult public func windowLevel(_ level: UIWindow.Level) -> HTAlertConfigModel {
+    @discardableResult public func windowLevel(_ level: UIWindow.Level) -> AlertConfigModel {
         windowLevel = level
         return self
     }
@@ -568,7 +539,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter bool: 是否支持自动旋转
     /// - Returns: self
-    @discardableResult public func autorotate(_ bool: Bool) -> HTAlertConfigModel {
+    @discardableResult public func autorotate(_ bool: Bool) -> AlertConfigModel {
         isAutorotate = bool
         return self
     }
@@ -577,7 +548,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter mask: 方向
     /// - Returns: self
-    @discardableResult public func supportedInterfaceOrientations(_ mask: UIInterfaceOrientationMask) ->  HTAlertConfigModel {
+    @discardableResult public func supportedInterfaceOrientations(_ mask: UIInterfaceOrientationMask) ->  AlertConfigModel {
         supportedInterfaceOrientations = mask
         return self
     }
@@ -586,7 +557,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter animation: 动画 使用UIView.animation....
     /// - Returns: self
-    @discardableResult public func openAnimationConfig(animation: @escaping (_ animating: @escaping () -> Void, _ animated: @escaping () -> Void) -> Void) ->HTAlertConfigModel {
+    @discardableResult public func openAnimationConfig(animation: @escaping (_ animating: @escaping () -> Void, _ animated: @escaping () -> Void) -> Void) ->AlertConfigModel {
         openAnimationBlock = animation
         return self
     }
@@ -595,7 +566,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter animation: 动画
     /// - Returns: self
-    @discardableResult public func closeAnimationConfig(animation: @escaping (_ animating: @escaping () -> Void, _ animated: @escaping () -> Void) -> Void) -> HTAlertConfigModel {
+    @discardableResult public func closeAnimationConfig(animation: @escaping (_ animating: @escaping () -> Void, _ animated: @escaping () -> Void) -> Void) -> AlertConfigModel {
         closeAnimationBlock = animation
         return self
     }
@@ -604,7 +575,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter style: 类型
     /// - Returns: self
-    @discardableResult public func openAnimationStyle(_ styles: HTAlertConfigModel.HTAnimationStyle) -> HTAlertConfigModel {
+    @discardableResult public func openAnimationStyle(_ styles: AlertConfigModel.AnimationStyle) -> AlertConfigModel {
         openAnimationStyle = styles
         return self
     }
@@ -613,7 +584,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter style: 类型 HTAnimationStyle
     /// - Returns: self
-    @discardableResult public func closeAnimationStyle(_ styles: HTAlertConfigModel.HTAnimationStyle) -> HTAlertConfigModel {
+    @discardableResult public func closeAnimationStyle(_ styles: AlertConfigModel.AnimationStyle) -> AlertConfigModel {
         closeAnimationStyle = styles
         return self
     }
@@ -624,7 +595,7 @@ extension HTAlertConfigModel {
     ///   - open: 开启动画时长
     ///   - close: 关闭动画时长
     /// - Returns: self
-    @discardableResult public func animationDuration(open: Double, close: Double) -> HTAlertConfigModel {
+    @discardableResult public func animationDuration(open: Double, close: Double) -> AlertConfigModel {
         openAnimationDuration = open
         closeAnimationDuration = close
         return self
@@ -634,7 +605,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter bool: 是否规避键盘
     /// - Returns: self
-    @discardableResult public func avoidKeyboard(_ bool: Bool) -> HTAlertConfigModel {
+    @discardableResult public func avoidKeyboard(_ bool: Bool) -> AlertConfigModel {
         isAvoidKeyboard = bool
         return self
     }
@@ -654,14 +625,14 @@ extension HTAlertConfigModel {
 }
 
 //MARK: ^^^^^^^^^^^^^^^ addXXX method ^^^^^^^^^^^^^^^
-extension HTAlertConfigModel {
+extension AlertConfigModel {
     
     /// 添加item
     ///
     /// - Parameter config: 回调
     /// - Returns: self
-    @discardableResult public func addItem(config: @escaping ConfigToItem) -> HTAlertConfigModel {
-        itemArray?.append(config)
+    @discardableResult public func addItem(config: @escaping ConfigToItem) -> AlertConfigModel {
+        itemArray.append(config)
         return self
     }
     
@@ -669,8 +640,8 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter config: 回调
     /// - Returns: self
-    @discardableResult public func addAction(config: @escaping ConfigToAction) -> HTAlertConfigModel {
-        actionArray?.append(config)
+    @discardableResult public func addAction(config: @escaping ConfigToAction) -> AlertConfigModel {
+        actionArray.append(config)
         return self
     }
     
@@ -678,7 +649,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter config: 回调
     /// - Returns: self
-    @discardableResult public func addTitle(config: @escaping ConfigToLabel) -> HTAlertConfigModel {
+    @discardableResult public func addTitle(config: @escaping ConfigToLabel) -> AlertConfigModel {
         addItem { (item) in
             item.type = .title
             item.insets = DefaultEdgInsets
@@ -691,7 +662,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter config: 回调
     /// - Returns: self
-    @discardableResult public func addContent(config: @escaping ConfigToLabel) -> HTAlertConfigModel {
+    @discardableResult public func addContent(config: @escaping ConfigToLabel) -> AlertConfigModel {
         addItem { (item) in
             item.type = .content
             item.insets = DefaultEdgInsets
@@ -704,7 +675,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter config: 回调
     /// - Returns: self
-    @discardableResult public func addCustomView(config: @escaping ConfigToCustomView) -> HTAlertConfigModel {
+    @discardableResult public func addCustomView(config: @escaping ConfigToCustomView) -> AlertConfigModel {
         addItem { (item) in
             item.type = .customView
             item.insets = DefaultEdgInsets
@@ -717,7 +688,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter block: 回调方法
     /// - Returns: self
-    @discardableResult public func addTextField(config: @escaping ConfigToTextField) -> HTAlertConfigModel {
+    @discardableResult public func addTextField(config: @escaping ConfigToTextField) -> AlertConfigModel {
         addItem { (item) in
             item.type = .textField
             item.textFieldBlock = config
@@ -727,13 +698,13 @@ extension HTAlertConfigModel {
 }
 
 //MARK: ^^^^^^^^^^^^^^^ AlertSheet config ^^^^^^^^^^^^^^^
-extension HTAlertConfigModel {
+extension AlertConfigModel {
     
     /// sheet 取消动作的间隔
     ///
     /// - Parameter height: 间隔大小
     /// - Returns: self
-    @discardableResult public func sheetCancelActionSpace(_ height: CGFloat) -> HTAlertConfigModel {
+    @discardableResult public func sheetCancelActionSpace(_ height: CGFloat) -> AlertConfigModel {
         actionSheetCancelSpaceHeight = height
         return self
     }
@@ -742,7 +713,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter color: 颜色 UIColor
     /// - Returns: self
-    @discardableResult public func sheetActionBackgroundColor(_ color: UIColor) -> HTAlertConfigModel {
+    @discardableResult public func sheetActionBackgroundColor(_ color: UIColor) -> AlertConfigModel {
         actionSheetBackgroundColor = color
         return self
     }
@@ -751,7 +722,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter color: 颜色 UIColor
     /// - Returns: self
-    @discardableResult public func sheetCancelActionSpace(_ color: UIColor) -> HTAlertConfigModel {
+    @discardableResult public func sheetCancelActionSpace(_ color: UIColor) -> AlertConfigModel {
         actionSheetCancelSpaceColor = color
         return self
     }
@@ -760,7 +731,7 @@ extension HTAlertConfigModel {
     ///
     /// - Parameter margin: 间距
     /// - Returns: self
-    @discardableResult public func sheetActionBottomMargin(_ margin: CGFloat) -> HTAlertConfigModel {
+    @discardableResult public func sheetActionBottomMargin(_ margin: CGFloat) -> AlertConfigModel {
         actionSheetBottomMargin = margin
         return self
     }

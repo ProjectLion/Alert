@@ -1,6 +1,6 @@
 //
-//  HTAlertWindow.swift
-//  HTAlertDemo
+//  AlertWindow.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/26.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HTAlertWindow: UIWindow {
+class AlertWindow: UIWindow {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

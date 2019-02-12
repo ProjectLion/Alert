@@ -1,6 +1,6 @@
 //
-//  HTAction.swift
-//  HTAlertDemo
+//  Action.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/25.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-/// HTAlert的action类。属性均有默认值
-class HTAction: NSObject {
+/// Alert的action类。属性均有默认值
+class Action: NSObject {
     
     /// Action类型枚举
-    public enum HTActionType {
+    public enum ActionType {
         /// 默认
         case defualt
         /// 取消
@@ -21,36 +21,24 @@ class HTAction: NSObject {
         case destructive
     }
     
-    /// Action边框位置枚举
-//    public enum HTActionBorderPosition {
-//        /// 上
-//        case top
-//        /// 下
-//        case bottom
-//        /// 左
-//        case left
-//        /// 右
-//        case right
-//    }
-    
-    public struct HTActionBorderPosition: OptionSet {
+    public struct ActionBorderPosition: OptionSet {
         public let rawValue: Int
         /// 默认
-        public static var defaults = HTActionBorderPosition(rawValue: 1)
+        public static var defaults = ActionBorderPosition(rawValue: 1)
         /// 上
-        public static var top = HTActionBorderPosition(rawValue: 2)
+        public static var top = ActionBorderPosition(rawValue: 2)
         /// 下
-        public static var bottom = HTActionBorderPosition(rawValue: 4)
+        public static var bottom = ActionBorderPosition(rawValue: 4)
         /// 左
-        public static var left = HTActionBorderPosition(rawValue: 8)
+        public static var left = ActionBorderPosition(rawValue: 8)
         /// 右
-        public static var right = HTActionBorderPosition(rawValue: 32)
+        public static var right = ActionBorderPosition(rawValue: 32)
         /// 所有方向
-        public static var all = HTActionBorderPosition(rawValue: 64)
+        public static var all = ActionBorderPosition(rawValue: 64)
     }
     
     /// action类型 默认 default
-    public var type: HTAction.HTActionType = .defualt
+    public var type: Action.ActionType = .defualt
     
     /// action标题 默认 “”
     public var title = ""
@@ -113,10 +101,10 @@ class HTAction: NSObject {
     public var borderColor = UIColor.darkGray
     
     /// action边框位置 默认 defaults
-    public var borderPosition: HTAction.HTActionBorderPosition = [.defaults]
+    public var borderPosition: Action.ActionBorderPosition = [.defaults]
     
-    /// action点击关闭(仅适用于cancel类型) 默认 true
-    public var isClickClose = true
+    /// action点击关闭(仅适用于defualt类型) 默认 false
+    public var isClickClose = false
     
     /// action点击事件回调
     public var clickBlock: () -> Void = {
@@ -124,7 +112,7 @@ class HTAction: NSObject {
     }
     
     /// 更新事件的回调
-    public var updateBlock: (HTAction) -> Void = {
+    public var updateBlock: (Action) -> Void = {
         action in
     }
     

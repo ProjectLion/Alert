@@ -1,6 +1,6 @@
 //
-//  HTItem.swift
-//  HTAlertDemo
+//  Item.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/25.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class HTItem: NSObject {
+class Item: NSObject {
     
     /// 展示项类型
-    public enum HTItemType {
+    public enum ItemType {
         /// 标题
         case title
         /// 内容
@@ -23,7 +23,7 @@ class HTItem: NSObject {
     }
     
     /// item类型 默认标题
-    public var type: HTItem.HTItemType = .title
+    public var type: Item.ItemType = .title
     
     /// item间距 (偏移量) 默认 UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     public var insets = DefaultEdgInsets
@@ -38,12 +38,12 @@ class HTItem: NSObject {
         textField in
     }
     /// customView
-    public var customViewBlock: (HTCustomView) -> Void = {
+    public var customViewBlock: (CustomView) -> Void = {
         custom in
     }
     /******************/
     
-    public var updateBlock: (HTItem) -> Void = {
+    public var updateBlock: (Item) -> Void = {
         item in
     }
     

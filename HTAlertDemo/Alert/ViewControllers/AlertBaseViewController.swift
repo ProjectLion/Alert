@@ -1,6 +1,6 @@
 //
-//  HTAlertBaseViewController.swift
-//  HTAlertDemo
+//  AlertBaseViewController.swift
+//  AlertDemo
 //
 //  Created by Ht on 2018/6/26.
 //  Copyright © 2018年 Ht. All rights reserved.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class HTAlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
+class AlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    public var config: HTAlertConfigModel!
+    public var config: AlertConfigModel!
     
     private var tempWindow: UIWindow?
     
@@ -20,7 +20,7 @@ class HTAlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         get{
             if tempWindow == nil {
-                tempWindow = HTAlert.shared.mainWindow
+                tempWindow = Alert.shared.mainWindow
             }
             if tempWindow == nil {
                 tempWindow = UIApplication.shared.keyWindow
@@ -30,8 +30,8 @@ class HTAlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
                 tempWindow = UIApplication.shared.windows.first(where: { $0.windowLevel == .normal && !$0.isHidden })
             }
             
-            if tempWindow != nil && HTAlert.shared.mainWindow == nil {
-                HTAlert.shared.mainWindow = tempWindow
+            if tempWindow != nil && Alert.shared.mainWindow == nil {
+                Alert.shared.mainWindow = tempWindow
             }
             return tempWindow
         }
@@ -39,9 +39,9 @@ class HTAlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     public var backgroundEffectView: UIVisualEffectView?
     
-    public var orientationType: HTScreenOrientationType = .vertical
+    public var orientationType: ScreenOrientationType = .vertical
     
-    public var customView: HTCustomView?
+    public var customView: CustomView?
     
     public var isShowing = false
     
@@ -56,7 +56,7 @@ class HTAlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     deinit {
-        ht_print(message: "HTAlertBaseViewController deinit")
+        print(message: "AlertBaseViewController deinit")
         config = nil
         currentKeyWindow = nil
         tempWindow = nil
@@ -80,7 +80,7 @@ class HTAlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
             view.addSubview(backgroundEffectView!)
         }
         view.backgroundColor = config.backgroundColor.withAlphaComponent(0)
-        orientationType = Scrren_H > Scrren_W ? HTScreenOrientationType.vertical : HTScreenOrientationType.horizontal
+        orientationType = Scrren_H > Scrren_W ? ScreenOrientationType.vertical : ScreenOrientationType.horizontal
         
         // Do any additional setup after loading the view.
     }
@@ -121,7 +121,7 @@ class HTAlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func close(completeBlock: @escaping () -> Void) {
-        HTAlert.shared.alertWindow.endEditing(true)
+        Alert.shared.alertWindow.endEditing(true)
     }
 
 }
