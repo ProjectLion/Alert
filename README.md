@@ -7,19 +7,22 @@ HTAlert
 
 ### Alert
 ``` 
-    // 完整的alert结构
+    // 修改前
     HTAlert.alert().config.XXXX.XXXX.show()
+    // 修改后
+    // 完整的alert结构
+    HTAlert.alert.config.XXXX.XXXX.show()
 ```
 
 ### Sheet
 ```
     // 完整的sheet结构
-    HTAlert.sheet().config.XXXX.XXXX.show()
+    HTAlert.sheet.config.XXXX.XXXX.show()
 ```
 
 ### 默认基础功能添加
 ```
-    HTAlert.alert().config
+    HTAlert.alert.config
     .title("这是标题")      /// 添加一个默认的标题label
     .content("这是内容")    /// 添加默认的内容label
     .addCustomView(config: { (view) in
@@ -50,7 +53,7 @@ HTAlert
 
 ### 自定义基础功能的添加
 ```
-    HTAlert.alert().config
+    HTAlert.alert.config
     .addTitle(config: { (label) in
     /// 自定义一个label的设置回调，也可以使用addContent()
     label.text = "XXXX"
@@ -82,7 +85,7 @@ HTAlert
 ### 自定义动画时长
 
 ```
-    HTAlert.alert().config
+    HTAlert.alert.config
     .animationDuration(open: 0.5, close: 0.6)  /// 设置动画时长
     .show()
 ```
@@ -90,7 +93,7 @@ HTAlert
 ### 自定义动画样式
 
 ```
-    HTAlert.alert().config
+    HTAlert.alert.config
     .openAnimationStyle([.top, .fade, .magnify])    /// 开启动画 从上出来、淡入、放大效果(方向只可设置一种，other随你高兴)
     .closeAnimationStyle([.bottom, .fade, .shrink]) /// 关闭动画 从下面消失、淡出、缩小效果(方向只可设置一种，other随你高兴)
     .show() /// 显示出来
@@ -98,7 +101,7 @@ HTAlert
          
 ### 自定义动画方法设置
 ```
-    HTAlert.alert().config
+    HTAlert.alert.config
     .title("自定义动画设置")
     .openAnimationConfig(animation: { (animating, animated) in
     /// openAnimationConfig自定义动画的方法及参数
