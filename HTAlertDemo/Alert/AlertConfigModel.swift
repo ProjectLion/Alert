@@ -135,14 +135,10 @@ class AlertConfigModel: NSObject {
     }
     
     /// 打开动画回调
-    public var openAnimationBlock = {
-        (_ animatingBlock: @escaping () -> Void, _ animatedBlock: @escaping () -> Void) -> Void in
-    }
+    public var openAnimationBlock: ConfigToBlockAndBlock!
     
     /// 关闭动画回调
-    public var closeAnimationBlock = {
-        (_ animatingBlock: @escaping () -> Void, _ animatedBlock: @escaping () -> Void) -> Void in
-    }
+    public var closeAnimationBlock: ConfigToBlockAndBlock!
     
     /// 开启动画类型
     public var openAnimationStyle: AlertConfigModel.AnimationStyle = [.fade, .none, .magnify]
