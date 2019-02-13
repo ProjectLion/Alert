@@ -76,7 +76,7 @@ typealias ConfigToItem = (Item) -> Void
 
 typealias ConfigToBlock = () -> Void
 
-typealias ConfigToBlockAndBlock = (_ animatingBlock: () -> Void,_ animatedBlock: () -> Void) -> Void
+typealias ConfigToBlockAndBlock = (_ animatingBlock: @escaping () -> Void,_ animatedBlock: @escaping () -> Void) -> Void
 
 /**************************/
 
