@@ -32,20 +32,25 @@ class ActionButton: UIButton {
             self.clipsToBounds = true
             
             setTitle(action.title, for: .normal)
-            
-            if !action.highlightTitle.isEmpty {
-                setTitle(action.highlightTitle, for: .highlighted)
-                setTitleColor(action.highlightColor, for: .highlighted)
-            }
-            if let att = action.attributedTitle {
-                setAttributedTitle(att, for: .normal)
-            }
-            if let attHighlight = action.attributedHighlightTitlt {
-                setAttributedTitle(attHighlight, for: .highlighted)
-            }
-            
             titleLabel?.font = action.font
             setTitleColor(action.color, for: .normal)
+            if !action.highlightTitle.isEmpty {
+                setTitle(action.highlightTitle, for: .highlighted)
+            }
+            if let att = action.attributedTitle {
+                let mutableAtt = NSMutableAttributedString(attributedString: att)
+                if att.attribute(.foregroundColor, at: 0, longestEffectiveRange: nil, in: NSRange(location: 0, length: att.string.count)) == nil {  // 如果用户没有对富文本设置颜色，则将标题颜色设置上
+                    mutableAtt.addAttributes([NSAttributedString.Key.foregroundColor :action.color], range: NSRange(location: 0, length: att.string.count))
+                }
+                setAttributedTitle(mutableAtt, for: .normal)
+            }
+            if let attHighlight = action.attributedHighlightTitle {
+                let mutableAtt = NSMutableAttributedString(attributedString: attHighlight)
+                if attHighlight.attribute(.foregroundColor, at: 0, longestEffectiveRange: nil, in: NSRange(location: 0, length: attHighlight.string.count)) == nil {    // 如果用户没有对富文本设置颜色，则将标题颜色设置上
+                    mutableAtt.addAttributes([NSAttributedString.Key.foregroundColor :action.highlightColor], range: NSRange(location: 0, length: attHighlight.string.count))
+                }
+                setAttributedTitle(mutableAtt, for: .highlighted)
+            }
             
             if action.type.rawValue != 0 {
                 setTitleColor(.red, for: .normal)

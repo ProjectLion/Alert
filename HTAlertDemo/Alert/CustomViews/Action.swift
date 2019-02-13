@@ -50,7 +50,7 @@ class Action: NSObject {
     public var attributedTitle: NSAttributedString?
     
     /// action富文本高亮标题 默认没有。PS: 确定为NSAttributedString类型是为了让用户在外部设置的时候更灵活
-    public var attributedHighlightTitlt: NSAttributedString?
+    public var attributedHighlightTitle: NSAttributedString?
     
     /// action字体 默认 系统14号字体
     public var font = DefaultFont
