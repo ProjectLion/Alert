@@ -12,9 +12,9 @@ import UIKit
 class Action: NSObject {
     
     /// Action类型枚举
-    public enum ActionType {
+    public enum ActionType: Int {
         /// 默认
-        case defualt
+        case defualt = 0
         /// 取消
         case cancel
         /// 销毁
@@ -40,17 +40,17 @@ class Action: NSObject {
     /// action类型 默认 default
     public var type: Action.ActionType = .defualt
     
-    /// action标题 默认 “”
-    public var title = ""
+    /// action标题 默认 “title”
+    public var title = "title"
     
     /// action高亮标题 默认 “”
-    public var highLightTitle = ""
+    public var highlightTitle = ""
     
-    /// action富文本标题(attributed) 默认 “”
-    public var attributedTitle: NSAttributedString = NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.blue])
+    /// action富文本标题(attributed) 默认没有。PS: 确定为NSAttributedString类型是为了让用户在外部设置的时候更灵活
+    public var attributedTitle: NSAttributedString?
     
-    /// action富文本高亮标题 默认 “这是富文本高亮标题”
-    public var attributedHighLightTitlt: NSAttributedString = NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.blue])
+    /// action富文本高亮标题 默认没有。PS: 确定为NSAttributedString类型是为了让用户在外部设置的时候更灵活
+    public var attributedHighlightTitlt: NSAttributedString?
     
     /// action字体 默认 系统14号字体
     public var font = DefaultFont
@@ -59,25 +59,25 @@ class Action: NSObject {
     public var color: UIColor = UIColor(red: 70 / 255, green: 170 / 255, blue: 230 / 255, alpha: 1)
     
     /// action高亮标题颜色 默认 蓝色
-    public var highLightColor: UIColor = .blue
+    public var highlightColor: UIColor = .blue
     
     /// action背景色 默认 白色
     public var backgroundColor: UIColor = .white
     
     /// action高亮背景色 默认 UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 1)
-    public var highLightBackgroundColor: UIColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 1)
+    public var highlightBackgroundColor: UIColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 0.7)
     
     /// action背景图片 默认 无
     public var backgroundImage: UIImage?
     
     /// action高亮背景图片 默认 无
-    public var highLightBackgroundImage: UIImage?
+    public var highlightBackgroundImage: UIImage?
     
     /// action图片 默认 无 (ps: 图片大小过大会导致图片显示出错,另外设置了图片需要设置一下imageInsets)
     public var image: UIImage?
     
     /// action高亮图片 默认 无
-    public var highLightImage: UIImage?
+    public var highlightImage: UIImage?
     
     /// action间距(偏移量) 默认 UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     public var insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
