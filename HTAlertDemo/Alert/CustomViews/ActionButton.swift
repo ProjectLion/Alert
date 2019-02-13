@@ -31,40 +31,39 @@ class ActionButton: UIButton {
         didSet{
             self.clipsToBounds = true
             
-            if !action.title.isEmpty {
-                setTitle(action.title, for: .normal)
+            setTitle(action.title, for: .normal)
+            
+            if !action.highlightTitle.isEmpty {
+                setTitle(action.highlightTitle, for: .highlighted)
+                setTitleColor(action.highlightColor, for: .highlighted)
             }
-            if !action.highLightTitle.isEmpty {
-                setTitle(action.highLightTitle, for: .highlighted)
-                setTitleColor(action.highLightColor, for: .highlighted)
+            if let att = action.attributedTitle {
+                setAttributedTitle(att, for: .normal)
             }
-            if !action.attributedTitle.isEqual(to: NSAttributedString(string: "")) {
-                setAttributedTitle(action.attributedTitle, for: .normal)
-            }
-            if !action.attributedHighLightTitlt.isEqual(to: NSAttributedString(string: "")) {
-                setAttributedTitle(action.attributedHighLightTitlt, for: .highlighted)
+            if let attHighlight = action.attributedHighlightTitlt {
+                setAttributedTitle(attHighlight, for: .highlighted)
             }
             
             titleLabel?.font = action.font
             setTitleColor(action.color, for: .normal)
             
-            if action.type == .destructive || action.type == .cancel {
+            if action.type.rawValue != 0 {
                 setTitleColor(.red, for: .normal)
             }
             
             setBackgroundImage(getImage(color: action.backgroundColor), for: .normal)
-            setBackgroundImage(getImage(color: action.highLightBackgroundColor), for: .highlighted)
-            if action.backgroundImage != nil {
-                setBackgroundImage(action.backgroundImage, for: .normal)
+            setBackgroundImage(getImage(color: action.highlightBackgroundColor), for: .highlighted)
+            if let bgImage = action.backgroundImage {
+                setBackgroundImage(bgImage, for: .normal)
             }
-            if action.highLightBackgroundImage != nil {
-                setBackgroundImage(action.highLightBackgroundImage, for: .highlighted)
+            if let highLightBgImage = action.highlightBackgroundImage {
+                setBackgroundImage(highLightBgImage, for: .highlighted)
             }
             borderColor = action.borderColor
             borderWidth = action.borderWidth < 0 ? 0 : action.borderWidth
             
             setImage(action.image, for: .normal)
-            setImage(action.highLightImage, for: .highlighted)
+            setImage(action.highlightImage, for: .highlighted)
             
             setupActionHeight(height: action.height)
             layer.cornerRadius = action.cornerRadius
@@ -97,16 +96,16 @@ class ActionButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         if let top = topLayer {
-            top.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: borderWidth)
+            top.frame = CGRect(x: 0, y: 0, width: width, height: borderWidth)
         }
         if let bottom = bottomLayer {
-            bottom.frame = CGRect(x: 0, y: frame.size.height - borderWidth, width: frame.size.width, height: borderWidth)
+            bottom.frame = CGRect(x: 0, y: height - borderWidth, width: width, height: borderWidth)
         }
         if let left = leftLayer {
-            left.frame = CGRect(x: 0, y: 0, width: borderWidth, height: frame.size.height)
+            left.frame = CGRect(x: 0, y: 0, width: borderWidth, height: height)
         }
         if let right = rightLayer {
-            right.frame = CGRect(x: frame.size.width - borderWidth, y: 0, width: borderWidth, height: frame.size.height)
+            right.frame = CGRect(x: width - borderWidth, y: 0, width: borderWidth, height: height)
         }
     }
     
