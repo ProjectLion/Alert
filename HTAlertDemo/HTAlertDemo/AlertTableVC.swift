@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Alert
 
 class AlertTableVC: UITableViewController {
     
@@ -127,7 +128,7 @@ extension AlertTableVC {
     func clickBase(index: Int) {
         switch index {
         case 0:
-            let custom = UIView(x: 0, y: 0, width: 100, height: 200, backGroundColor: .red)
+            let custom = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             Alert.alert.config
             .closeAnimationStyle(.fade)
             .customView(custom)
@@ -186,7 +187,9 @@ extension AlertTableVC {
                 .title("这是标题")
                 .content("这是内容")
                 .addCustomView(config: { (view) in
-                    view.view = UIView(x: 0, y: 0, width: 200, height: 50, backGroundColor: .blue)
+                    let v = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+                    v.backgroundColor = .red
+                    view.view = v
                 })
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -359,12 +362,12 @@ extension AlertTableVC {
                     // 点击取消的回调
                 })
                 .addCustomView(config: { (v) in
-                    let backV = UIView(x: 100, y: 0, width: 50, height: 50)
+                    let backV = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
                     backV.backgroundColor = .red
                     v.view = backV
                     v.isAutoWidth = false
                 })
-                .backgroundStyleBlur(.prominent)
+                .backgroundStyleBlur(.light)
                 .show()
         case 11:
             Alert.alert.config

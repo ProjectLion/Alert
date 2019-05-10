@@ -121,28 +121,40 @@ extension Action {
         public typealias RawValue = Int
         
         /// 默认
-        public static var defaults: ActionBorderPosition = {
-            return ActionBorderPosition(rawValue: 1)
-        }()
+        public static var defaults: ActionBorderPosition {
+            get {
+                return ActionBorderPosition(rawValue: 1)
+            }
+        }
         /// 上
-        public static var top: ActionBorderPosition = {
-            return ActionBorderPosition(rawValue: 2)
-        }()
+        public static var top: ActionBorderPosition {
+            get {
+                return ActionBorderPosition(rawValue: 2)
+            }
+        }
         /// 下
-        public static var bottom: ActionBorderPosition = {
-            return ActionBorderPosition(rawValue: 4)
-        }()
+        public static var bottom: ActionBorderPosition {
+            get {
+                return ActionBorderPosition(rawValue: 4)
+            }
+        }
         /// 左
-        public static var left: ActionBorderPosition = {
-            return ActionBorderPosition(rawValue: 8)
-        }()
+        public static var left: ActionBorderPosition {
+            get {
+                return ActionBorderPosition(rawValue: 8)
+            }
+        }
         /// 右
-        public static var right: ActionBorderPosition = {
-            return ActionBorderPosition(rawValue: 16)
-        }()
+        public static var right: ActionBorderPosition {
+            get {
+                return ActionBorderPosition(rawValue: 16)
+            }
+        }
         /// 所有方向
-        public static var all: ActionBorderPosition = {
-            return ActionBorderPosition(rawValue: 32)
-        }()
+        public static var all: ActionBorderPosition {
+            get {
+                return ActionBorderPosition(rawValue: 32)
+            }
+        }
     }
 }

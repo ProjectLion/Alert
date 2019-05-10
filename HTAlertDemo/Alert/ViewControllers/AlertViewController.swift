@@ -24,7 +24,6 @@ class AlertViewController: AlertBaseViewController {
     
     private var alertView: UIScrollView? = {
         let alert = UIScrollView()
-        alert.contentInsetAdjustmentBehavior = .never
         alert.isDirectionalLockEnabled = true
         alert.bounces = false
         alert.showsHorizontalScrollIndicator = false
@@ -45,7 +44,11 @@ class AlertViewController: AlertBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if #available(iOS 11.0, *) {
+            alertView?.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
         alertView?.backgroundColor = config.headerColor
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(headerTapAction(tap:)))
@@ -69,7 +72,9 @@ class AlertViewController: AlertBaseViewController {
     }
     
     override func viewSafeAreaInsetsDidChange() {
-        super.viewSafeAreaInsetsDidChange()
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+        }
         updateLayout()
     }
     /// 更新布局

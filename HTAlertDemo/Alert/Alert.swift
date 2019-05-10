@@ -20,7 +20,7 @@ public class Alert: NSObject {
     private override init() {}
     
     /// mainWindow
-    var mainWindow: UIWindow!
+    public var mainWindow: UIWindow!
     
     /// window
     var alertWindow: AlertWindow = {
@@ -44,7 +44,7 @@ public class Alert: NSObject {
 //        config.type = .alert
 //        return config
 //    }
-    static var alert: AlertConfig {
+    public static var alert: AlertConfig {
         get {
             let config = AlertConfig()
             config.type = .alert
@@ -59,7 +59,7 @@ public class Alert: NSObject {
 //        config.config.isClickBackgroundClose(true)
 //        return config
 //    }
-    static var sheet: AlertConfig {
+    public static var sheet: AlertConfig {
         get {
             let config = AlertConfig()
             config.type = .sheet

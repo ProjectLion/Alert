@@ -717,43 +717,57 @@ extension AlertConfigModel {
     public struct AnimationStyle: OptionSet {
         
         public var rawValue: Int
-        public init(rawValue: AnimationStyle.RawValue) {
+        public init(rawValue: Int) {
             self.rawValue = rawValue
         }
-        
-        public typealias RawValue = Int
         /// 默认
-        public static var none: AnimationStyle = {
-            return AnimationStyle(rawValue: 1)
-        }()
+        public static var none: AnimationStyle {
+            get {
+                return AnimationStyle(rawValue: 1)
+            }
+        }
         /// 上
-        public static var top: AnimationStyle = {
-            return AnimationStyle(rawValue: 2)
-        }()
+        public static var top: AnimationStyle {
+            get {
+                return AnimationStyle(rawValue: 2)
+            }
+        }
         /// 下
-        public static var bottom: AnimationStyle = {
-            return AnimationStyle(rawValue: 4)
-        }()
+        public static var bottom: AnimationStyle {
+            get {
+                return AnimationStyle(rawValue: 4)
+            }
+        }
         /// 左
-        public static var left: AnimationStyle = {
-            return AnimationStyle(rawValue: 8)
-        }()
+        public static var left: AnimationStyle {
+            get {
+                return AnimationStyle(rawValue: 8)
+            }
+        }
         /// 右
-        public static var right: AnimationStyle = {
-            return AnimationStyle(rawValue: 16)
-        }()
+        public static var right: AnimationStyle {
+            get {
+                return AnimationStyle(rawValue: 16)
+            }
+        }
         /// 淡出淡入
-        public static var fade: AnimationStyle = {
-            return AnimationStyle(rawValue: 32)
-        }()
+        public static var fade: AnimationStyle {
+            get {
+                return AnimationStyle(rawValue: 32)
+            }
+        }
         /// 放大
-        public static var magnify: AnimationStyle = {
-            return AnimationStyle(rawValue: 64)
-        }()
+        public static var magnify: AnimationStyle {
+            get {
+                return AnimationStyle(rawValue: 64)
+            }
+        }
         /// 缩小
-        public static var shrink: AnimationStyle = {
-            return AnimationStyle(rawValue: 128)
-        }()
+        public static var shrink: AnimationStyle {
+            get {
+                return AnimationStyle(rawValue: 128)
+            }
+        }
         
     }
 }

@@ -169,7 +169,9 @@ extension SheetTableVC {
                 .title("这是标题")
                 .content("这是内容")
                 .addCustomView(config: { (view) in
-                    view.view = UIView(x: 0, y: 0, width: 200, height: 50, backGroundColor: .blue)
+                    let v = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+                    v.backgroundColor = .blue
+                    view.view = v
                 })
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -322,7 +324,7 @@ extension SheetTableVC {
                 .cancelAction("取消", block: {
                     // 点击取消的回调
                 })
-                .backgroundStyleBlur(.prominent)
+//                .backgroundStyleBlur(.prominent)
                 .show()
         case 11:
             Alert.sheet.config

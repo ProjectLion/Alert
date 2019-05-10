@@ -24,7 +24,6 @@ class ActionSheetViewController: AlertBaseViewController {
     
     public var sheetView: UIScrollView? = {
         let alert = UIScrollView()
-        alert.contentInsetAdjustmentBehavior = .never
         alert.isDirectionalLockEnabled = true
         alert.bounces = false
         alert.showsHorizontalScrollIndicator = false
@@ -51,7 +50,11 @@ class ActionSheetViewController: AlertBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if #available(iOS 11.0, *) {
+            sheetView?.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
         sheetView?.backgroundColor = config.headerColor
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(headerTapAction(tap:)))
@@ -75,7 +78,9 @@ class ActionSheetViewController: AlertBaseViewController {
     }
     
     override func viewSafeAreaInsetsDidChange() {
-        super.viewSafeAreaInsetsDidChange()
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+        }
         updateLayout()
     }
     /// 更新布局
