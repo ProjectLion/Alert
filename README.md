@@ -1,9 +1,10 @@
 HTAlert
 ===========
-基于`Xcode 10.0`   `Swift 4.2`写的，可能有的小伙伴clone到本地后运行不起来，因为 `Swift 4.2` 更新了一些语法，没关系。都不是什么大问题，根据  `Xcode` 提示改完就OK了。在此感谢[lixiang1994](https://github.com/lixiang1994) ,该库参照(copy、仿写)了 [lixiang1994的LEEAlert(OC)](https://github.com/lixiang1994/LEEAlert)。
+基于`Swift 5.0`写的，可能有的小伙伴clone到本地后运行不起来，因为 `Swift 5.0` 更新了一些语法，没关系。都不是什么大问题，根据  `Xcode` 提示改完就OK了。
 
 用法
 ===========
+将framework文件导入项目，#import Alert。也可以直接将源码copy到项目中。
 
 ### Alert
 ``` 
@@ -126,9 +127,4 @@ HTAlert
 
 系统要求
 ==============
-该库最低支持 `iOS 8.0` 和 `Xcode 10.0`、`Swift 4.2`。
-
- 致谢
- ==============
-[lixiang1994的简书](http://www.jianshu.com/users/a6da0db100c8)
-[lixiang1994的GitHub](https://github.com/lixiang1994)
+该库最低支持 `iOS 8.0`、`Swift 5.0`。
