@@ -9,29 +9,7 @@
 import UIKit
 
 /// 配置模型管理类
-class AlertConfigModel: NSObject {
-    /// 动画类型
-    public struct AnimationStyle: OptionSet {
-        
-        public let rawValue: Int
-        /// 默认
-        public static var none = AnimationStyle(rawValue: 1)
-        /// 上
-        public static var top = AnimationStyle(rawValue: 2)
-        /// 下
-        public static var bottom = AnimationStyle(rawValue: 4)
-        /// 左
-        public static var left = AnimationStyle(rawValue: 8)
-        /// 右
-        public static var right = AnimationStyle(rawValue: 32)
-        /// 淡出淡入
-        public static var fade = AnimationStyle(rawValue: 64)
-        /// 放大
-        public static var magnify = AnimationStyle(rawValue: 128)
-        /// 缩小
-        public static var shrink = AnimationStyle(rawValue: 256)
-        
-    }
+public class AlertConfigModel: NSObject {
     
     /*****      publicProperties      ******/
     
@@ -732,4 +710,50 @@ extension AlertConfigModel {
         return self
     }
     
+}
+
+extension AlertConfigModel {
+    /// 动画类型
+    public struct AnimationStyle: OptionSet {
+        
+        public var rawValue: Int
+        public init(rawValue: AnimationStyle.RawValue) {
+            self.rawValue = rawValue
+        }
+        
+        public typealias RawValue = Int
+        /// 默认
+        public static var none: AnimationStyle = {
+            return AnimationStyle(rawValue: 1)
+        }()
+        /// 上
+        public static var top: AnimationStyle = {
+            return AnimationStyle(rawValue: 2)
+        }()
+        /// 下
+        public static var bottom: AnimationStyle = {
+            return AnimationStyle(rawValue: 4)
+        }()
+        /// 左
+        public static var left: AnimationStyle = {
+            return AnimationStyle(rawValue: 8)
+        }()
+        /// 右
+        public static var right: AnimationStyle = {
+            return AnimationStyle(rawValue: 16)
+        }()
+        /// 淡出淡入
+        public static var fade: AnimationStyle = {
+            return AnimationStyle(rawValue: 32)
+        }()
+        /// 放大
+        public static var magnify: AnimationStyle = {
+            return AnimationStyle(rawValue: 64)
+        }()
+        /// 缩小
+        public static var shrink: AnimationStyle = {
+            return AnimationStyle(rawValue: 128)
+        }()
+        
+    }
 }

@@ -143,9 +143,9 @@ extension AlertTableVC {
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
-                    action.highLightTitle = "高亮了"
+                    action.highlightTitle = "高亮了"
                     action.isClickClose = true
-                    action.highLightColor = .cyan
+                    action.highlightColor = .cyan
                 })
                 .addTextField(config: { (textField) in
                     textField.placeholder = "这里是输入框"
@@ -177,8 +177,8 @@ extension AlertTableVC {
                     action.isClickClose = true
                     action.type = Action.ActionType.defualt
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .show()
         case 3:
@@ -194,8 +194,8 @@ extension AlertTableVC {
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .show()
         case 4:
@@ -216,8 +216,8 @@ extension AlertTableVC {
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .show()
         case 5:
@@ -238,8 +238,8 @@ extension AlertTableVC {
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .show()
         case 6:

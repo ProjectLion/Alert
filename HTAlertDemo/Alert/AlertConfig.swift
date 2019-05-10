@@ -9,10 +9,10 @@
 import UIKit
 
 /// 配置管理类
-class AlertConfig: NSObject {
+public class AlertConfig: NSObject {
     
     /// 配置模型
-    public lazy var config: AlertConfigModel = {
+    public var config: AlertConfigModel = {
         let config = AlertConfigModel()
         return config
     }()
@@ -58,7 +58,7 @@ class AlertConfig: NSObject {
 
 //MARK: ^^^^^^^^^^^^^^^ AlertDelegate ^^^^^^^^^^^^^^^
 extension AlertConfig: AlertDelegate {
-    func closeBlock(complete: @escaping () -> Void) {
+    public func closeBlock(complete: @escaping () -> Void) {
         if Alert.shared.viewController != nil {
             Alert.shared.viewController.close(completeBlock: complete)
         }

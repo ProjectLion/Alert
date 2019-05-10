@@ -9,33 +9,7 @@
 import UIKit
 
 /// Alert的action类。属性均有默认值
-class Action: NSObject {
-    
-    /// Action类型枚举
-    public enum ActionType: Int {
-        /// 默认
-        case defualt = 0
-        /// 取消
-        case cancel
-        /// 销毁
-        case destructive
-    }
-    
-    public struct ActionBorderPosition: OptionSet {
-        public let rawValue: Int
-        /// 默认
-        public static var defaults = ActionBorderPosition(rawValue: 1)
-        /// 上
-        public static var top = ActionBorderPosition(rawValue: 2)
-        /// 下
-        public static var bottom = ActionBorderPosition(rawValue: 4)
-        /// 左
-        public static var left = ActionBorderPosition(rawValue: 8)
-        /// 右
-        public static var right = ActionBorderPosition(rawValue: 32)
-        /// 所有方向
-        public static var all = ActionBorderPosition(rawValue: 64)
-    }
+public class Action: NSObject {
     
     /// action类型 默认 default
     public var type: Action.ActionType = .defualt
@@ -123,5 +97,52 @@ class Action: NSObject {
     
     override init() {
         super.init()
+    }
+}
+
+extension Action {
+    /// Action类型枚举
+    public enum ActionType: Int {
+        /// 默认
+        case defualt = 0
+        /// 取消
+        case cancel
+        /// 销毁
+        case destructive
+    }
+    
+    public struct ActionBorderPosition: OptionSet {
+        
+        public var rawValue: Int
+        public init(rawValue: ActionBorderPosition.RawValue) {
+            self.rawValue = rawValue
+        }
+        
+        public typealias RawValue = Int
+        
+        /// 默认
+        public static var defaults: ActionBorderPosition = {
+            return ActionBorderPosition(rawValue: 1)
+        }()
+        /// 上
+        public static var top: ActionBorderPosition = {
+            return ActionBorderPosition(rawValue: 2)
+        }()
+        /// 下
+        public static var bottom: ActionBorderPosition = {
+            return ActionBorderPosition(rawValue: 4)
+        }()
+        /// 左
+        public static var left: ActionBorderPosition = {
+            return ActionBorderPosition(rawValue: 8)
+        }()
+        /// 右
+        public static var right: ActionBorderPosition = {
+            return ActionBorderPosition(rawValue: 16)
+        }()
+        /// 所有方向
+        public static var all: ActionBorderPosition = {
+            return ActionBorderPosition(rawValue: 32)
+        }()
     }
 }

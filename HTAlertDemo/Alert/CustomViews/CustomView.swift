@@ -9,7 +9,7 @@
 import UIKit
 
 /// 自定义视图对象
-class CustomView: NSObject {
+public class CustomView: NSObject {
     
     /// 视图对象
     public var view: UIView!
@@ -42,7 +42,7 @@ class CustomView: NSObject {
         view.removeObserver(self, forKeyPath: "frame")
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         let view = object as! UIView
         
         if !size.equalTo(view.frame.size) {

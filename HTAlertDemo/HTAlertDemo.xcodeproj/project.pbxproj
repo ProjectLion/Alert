@@ -15,24 +15,23 @@
 		8E376A5420E5FFEF00D9F453 /* HTAlertDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A5320E5FFEF00D9F453 /* HTAlertDemoTests.swift */; };
 		8E376A5F20E5FFEF00D9F453 /* HTAlertDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A5E20E5FFEF00D9F453 /* HTAlertDemoUITests.swift */; };
 		8E376A8320E6003800D9F453 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A6C20E6003800D9F453 /* TabBarViewController.swift */; };
-		8E376A8420E6003800D9F453 /* HTAlertConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A6E20E6003800D9F453 /* HTAlertConfigModel.swift */; };
-		8E376A8520E6003800D9F453 /* HTUIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7020E6003800D9F453 /* HTUIViewExtension.swift */; };
-		8E376A8620E6003800D9F453 /* HTAlertConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7120E6003800D9F453 /* HTAlertConfig.swift */; };
-		8E376A8720E6003800D9F453 /* HTAlertBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7320E6003800D9F453 /* HTAlertBaseViewController.swift */; };
-		8E376A8820E6003800D9F453 /* HTActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7420E6003800D9F453 /* HTActionSheetViewController.swift */; };
-		8E376A8920E6003800D9F453 /* HTAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7520E6003800D9F453 /* HTAlertViewController.swift */; };
-		8E376A8A20E6003800D9F453 /* HTAlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7620E6003800D9F453 /* HTAlertWindow.swift */; };
-		8E376A8B20E6003800D9F453 /* HTCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7820E6003800D9F453 /* HTCustomView.swift */; };
-		8E376A8C20E6003800D9F453 /* HTActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7920E6003800D9F453 /* HTActionButton.swift */; };
-		8E376A8D20E6003800D9F453 /* HTItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7A20E6003800D9F453 /* HTItemView.swift */; };
-		8E376A8E20E6003800D9F453 /* HTItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7B20E6003800D9F453 /* HTItem.swift */; };
-		8E376A8F20E6003800D9F453 /* HTAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7C20E6003800D9F453 /* HTAction.swift */; };
-		8E376A9020E6003800D9F453 /* HTItemLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7D20E6003800D9F453 /* HTItemLabel.swift */; };
-		8E376A9120E6003800D9F453 /* HTItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7E20E6003800D9F453 /* HTItemTextField.swift */; };
-		8E376A9220E6003800D9F453 /* HTAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A7F20E6003800D9F453 /* HTAlertHelper.swift */; };
-		8E376A9320E6003800D9F453 /* HTAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A8020E6003800D9F453 /* HTAlert.swift */; };
 		8E376A9420E6003800D9F453 /* AlertTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A8120E6003800D9F453 /* AlertTableVC.swift */; };
 		8E376A9520E6003800D9F453 /* SheetTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E376A8220E6003800D9F453 /* SheetTableVC.swift */; };
+		AF680EA022851762002A88DF /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E8E22851762002A88DF /* Alert.swift */; };
+		AF680EA122851762002A88DF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9022851762002A88DF /* UIViewExtension.swift */; };
+		AF680EA222851762002A88DF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9122851762002A88DF /* AlertHelper.swift */; };
+		AF680EA322851762002A88DF /* AlertConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9222851762002A88DF /* AlertConfigModel.swift */; };
+		AF680EA422851762002A88DF /* AlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9422851762002A88DF /* AlertWindow.swift */; };
+		AF680EA522851762002A88DF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9522851762002A88DF /* AlertViewController.swift */; };
+		AF680EA622851762002A88DF /* ActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9622851762002A88DF /* ActionSheetViewController.swift */; };
+		AF680EA722851762002A88DF /* AlertBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9722851762002A88DF /* AlertBaseViewController.swift */; };
+		AF680EA822851762002A88DF /* AlertConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9822851762002A88DF /* AlertConfig.swift */; };
+		AF680EA922851762002A88DF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9A22851762002A88DF /* CustomView.swift */; };
+		AF680EAA22851762002A88DF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9B22851762002A88DF /* Item.swift */; };
+		AF680EAB22851762002A88DF /* ItemLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9C22851762002A88DF /* ItemLabel.swift */; };
+		AF680EAC22851762002A88DF /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9D22851762002A88DF /* ActionButton.swift */; };
+		AF680EAD22851762002A88DF /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9E22851762002A88DF /* Action.swift */; };
+		AF680EAE22851762002A88DF /* ItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF680E9F22851762002A88DF /* ItemTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,24 +66,23 @@
 		8E376A5E20E5FFEF00D9F453 /* HTAlertDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTAlertDemoUITests.swift; sourceTree = "<group>"; };
 		8E376A6020E5FFEF00D9F453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E376A6C20E6003800D9F453 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		8E376A6E20E6003800D9F453 /* HTAlertConfigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTAlertConfigModel.swift; sourceTree = "<group>"; };
-		8E376A7020E6003800D9F453 /* HTUIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTUIViewExtension.swift; sourceTree = "<group>"; };
-		8E376A7120E6003800D9F453 /* HTAlertConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTAlertConfig.swift; sourceTree = "<group>"; };
-		8E376A7320E6003800D9F453 /* HTAlertBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTAlertBaseViewController.swift; sourceTree = "<group>"; };
-		8E376A7420E6003800D9F453 /* HTActionSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTActionSheetViewController.swift; sourceTree = "<group>"; };
-		8E376A7520E6003800D9F453 /* HTAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTAlertViewController.swift; sourceTree = "<group>"; };
-		8E376A7620E6003800D9F453 /* HTAlertWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTAlertWindow.swift; sourceTree = "<group>"; };
-		8E376A7820E6003800D9F453 /* HTCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTCustomView.swift; sourceTree = "<group>"; };
-		8E376A7920E6003800D9F453 /* HTActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTActionButton.swift; sourceTree = "<group>"; };
-		8E376A7A20E6003800D9F453 /* HTItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTItemView.swift; sourceTree = "<group>"; };
-		8E376A7B20E6003800D9F453 /* HTItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTItem.swift; sourceTree = "<group>"; };
-		8E376A7C20E6003800D9F453 /* HTAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTAction.swift; sourceTree = "<group>"; };
-		8E376A7D20E6003800D9F453 /* HTItemLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTItemLabel.swift; sourceTree = "<group>"; };
-		8E376A7E20E6003800D9F453 /* HTItemTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTItemTextField.swift; sourceTree = "<group>"; };
-		8E376A7F20E6003800D9F453 /* HTAlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTAlertHelper.swift; sourceTree = "<group>"; };
-		8E376A8020E6003800D9F453 /* HTAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTAlert.swift; sourceTree = "<group>"; };
 		8E376A8120E6003800D9F453 /* AlertTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTableVC.swift; sourceTree = "<group>"; };
 		8E376A8220E6003800D9F453 /* SheetTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetTableVC.swift; sourceTree = "<group>"; };
+		AF680E8E22851762002A88DF /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		AF680E9022851762002A88DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		AF680E9122851762002A88DF /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		AF680E9222851762002A88DF /* AlertConfigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConfigModel.swift; sourceTree = "<group>"; };
+		AF680E9422851762002A88DF /* AlertWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertWindow.swift; sourceTree = "<group>"; };
+		AF680E9522851762002A88DF /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		AF680E9622851762002A88DF /* ActionSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetViewController.swift; sourceTree = "<group>"; };
+		AF680E9722851762002A88DF /* AlertBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertBaseViewController.swift; sourceTree = "<group>"; };
+		AF680E9822851762002A88DF /* AlertConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConfig.swift; sourceTree = "<group>"; };
+		AF680E9A22851762002A88DF /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		AF680E9B22851762002A88DF /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		AF680E9C22851762002A88DF /* ItemLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemLabel.swift; sourceTree = "<group>"; };
+		AF680E9D22851762002A88DF /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		AF680E9E22851762002A88DF /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		AF680E9F22851762002A88DF /* ItemTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +113,7 @@
 		8E376A3220E5FFEF00D9F453 = {
 			isa = PBXGroup;
 			children = (
+				AF680E8D22851762002A88DF /* Alert */,
 				8E376A3D20E5FFEF00D9F453 /* HTAlertDemo */,
 				8E376A5220E5FFEF00D9F453 /* HTAlertDemoTests */,
 				8E376A5D20E5FFEF00D9F453 /* HTAlertDemoUITests */,
@@ -135,7 +134,6 @@
 		8E376A3D20E5FFEF00D9F453 /* HTAlertDemo */ = {
 			isa = PBXGroup;
 			children = (
-				8E376A6D20E6003800D9F453 /* HTAlert */,
 				8E376A8220E6003800D9F453 /* SheetTableVC.swift */,
 				8E376A8120E6003800D9F453 /* AlertTableVC.swift */,
 				8E376A6C20E6003800D9F453 /* TabBarViewController.swift */,
@@ -167,49 +165,48 @@
 			path = HTAlertDemoUITests;
 			sourceTree = "<group>";
 		};
-		8E376A6D20E6003800D9F453 /* HTAlert */ = {
+		AF680E8D22851762002A88DF /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				8E376A7F20E6003800D9F453 /* HTAlertHelper.swift */,
-				8E376A8020E6003800D9F453 /* HTAlert.swift */,
-				8E376A6E20E6003800D9F453 /* HTAlertConfigModel.swift */,
-				8E376A7120E6003800D9F453 /* HTAlertConfig.swift */,
-				8E376A6F20E6003800D9F453 /* Extension */,
-				8E376A7220E6003800D9F453 /* ViewControllers */,
-				8E376A7720E6003800D9F453 /* CustomViews */,
+				AF680E8E22851762002A88DF /* Alert.swift */,
+				AF680E8F22851762002A88DF /* Extension */,
+				AF680E9122851762002A88DF /* AlertHelper.swift */,
+				AF680E9222851762002A88DF /* AlertConfigModel.swift */,
+				AF680E9322851762002A88DF /* ViewControllers */,
+				AF680E9822851762002A88DF /* AlertConfig.swift */,
+				AF680E9922851762002A88DF /* CustomViews */,
 			);
-			path = HTAlert;
+			path = Alert;
 			sourceTree = "<group>";
 		};
-		8E376A6F20E6003800D9F453 /* Extension */ = {
+		AF680E8F22851762002A88DF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				8E376A7020E6003800D9F453 /* HTUIViewExtension.swift */,
+				AF680E9022851762002A88DF /* UIViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		8E376A7220E6003800D9F453 /* ViewControllers */ = {
+		AF680E9322851762002A88DF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8E376A7320E6003800D9F453 /* HTAlertBaseViewController.swift */,
-				8E376A7420E6003800D9F453 /* HTActionSheetViewController.swift */,
-				8E376A7520E6003800D9F453 /* HTAlertViewController.swift */,
-				8E376A7620E6003800D9F453 /* HTAlertWindow.swift */,
+				AF680E9422851762002A88DF /* AlertWindow.swift */,
+				AF680E9522851762002A88DF /* AlertViewController.swift */,
+				AF680E9622851762002A88DF /* ActionSheetViewController.swift */,
+				AF680E9722851762002A88DF /* AlertBaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		8E376A7720E6003800D9F453 /* CustomViews */ = {
+		AF680E9922851762002A88DF /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				8E376A7820E6003800D9F453 /* HTCustomView.swift */,
-				8E376A7920E6003800D9F453 /* HTActionButton.swift */,
-				8E376A7A20E6003800D9F453 /* HTItemView.swift */,
-				8E376A7B20E6003800D9F453 /* HTItem.swift */,
-				8E376A7C20E6003800D9F453 /* HTAction.swift */,
-				8E376A7D20E6003800D9F453 /* HTItemLabel.swift */,
-				8E376A7E20E6003800D9F453 /* HTItemTextField.swift */,
+				AF680E9A22851762002A88DF /* CustomView.swift */,
+				AF680E9B22851762002A88DF /* Item.swift */,
+				AF680E9C22851762002A88DF /* ItemLabel.swift */,
+				AF680E9D22851762002A88DF /* ActionButton.swift */,
+				AF680E9E22851762002A88DF /* Action.swift */,
+				AF680E9F22851762002A88DF /* ItemTextField.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -345,27 +342,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E376A8A20E6003800D9F453 /* HTAlertWindow.swift in Sources */,
-				8E376A8720E6003800D9F453 /* HTAlertBaseViewController.swift in Sources */,
-				8E376A8E20E6003800D9F453 /* HTItem.swift in Sources */,
-				8E376A8520E6003800D9F453 /* HTUIViewExtension.swift in Sources */,
-				8E376A8920E6003800D9F453 /* HTAlertViewController.swift in Sources */,
-				8E376A8820E6003800D9F453 /* HTActionSheetViewController.swift in Sources */,
+				AF680EA922851762002A88DF /* CustomView.swift in Sources */,
+				AF680EAD22851762002A88DF /* Action.swift in Sources */,
+				AF680EA622851762002A88DF /* ActionSheetViewController.swift in Sources */,
+				AF680EA022851762002A88DF /* Alert.swift in Sources */,
+				AF680EA722851762002A88DF /* AlertBaseViewController.swift in Sources */,
+				AF680EAA22851762002A88DF /* Item.swift in Sources */,
+				AF680EAC22851762002A88DF /* ActionButton.swift in Sources */,
 				8E376A4120E5FFEF00D9F453 /* ViewController.swift in Sources */,
-				8E376A9020E6003800D9F453 /* HTItemLabel.swift in Sources */,
 				8E376A8320E6003800D9F453 /* TabBarViewController.swift in Sources */,
-				8E376A9120E6003800D9F453 /* HTItemTextField.swift in Sources */,
-				8E376A8420E6003800D9F453 /* HTAlertConfigModel.swift in Sources */,
-				8E376A8620E6003800D9F453 /* HTAlertConfig.swift in Sources */,
-				8E376A8C20E6003800D9F453 /* HTActionButton.swift in Sources */,
-				8E376A8B20E6003800D9F453 /* HTCustomView.swift in Sources */,
-				8E376A9320E6003800D9F453 /* HTAlert.swift in Sources */,
-				8E376A9220E6003800D9F453 /* HTAlertHelper.swift in Sources */,
 				8E376A9520E6003800D9F453 /* SheetTableVC.swift in Sources */,
+				AF680EA422851762002A88DF /* AlertWindow.swift in Sources */,
+				AF680EA222851762002A88DF /* AlertHelper.swift in Sources */,
+				AF680EA122851762002A88DF /* UIViewExtension.swift in Sources */,
+				AF680EAB22851762002A88DF /* ItemLabel.swift in Sources */,
+				AF680EAE22851762002A88DF /* ItemTextField.swift in Sources */,
+				AF680EA522851762002A88DF /* AlertViewController.swift in Sources */,
 				8E376A3F20E5FFEF00D9F453 /* AppDelegate.swift in Sources */,
-				8E376A8F20E6003800D9F453 /* HTAction.swift in Sources */,
+				AF680EA322851762002A88DF /* AlertConfigModel.swift in Sources */,
+				AF680EA822851762002A88DF /* AlertConfig.swift in Sources */,
 				8E376A9420E6003800D9F453 /* AlertTableVC.swift in Sources */,
-				8E376A8D20E6003800D9F453 /* HTItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +535,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 85C366UKGF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HTAlertDemo",
+				);
 				INFOPLIST_FILE = HTAlertDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -557,7 +557,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 85C366UKGF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HTAlertDemo",
+				);
 				INFOPLIST_FILE = HTAlertDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

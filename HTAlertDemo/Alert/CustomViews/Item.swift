@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Item: NSObject {
+public class Item: NSObject {
     
     /// 展示项类型
     public enum ItemType {

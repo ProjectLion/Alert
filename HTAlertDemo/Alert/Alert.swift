@@ -9,12 +9,12 @@
 import UIKit
 
 
-protocol AlertDelegate {
+public protocol AlertDelegate {
     func closeBlock(complete: @escaping () -> Void)
 }
 
 /// Alert
-class Alert: NSObject {
+public class Alert: NSObject {
     ///
     static let shared = Alert()
     private override init() {}

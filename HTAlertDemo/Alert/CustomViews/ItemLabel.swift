@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemLabel: UILabel {
+public class ItemLabel: UILabel {
     
     public var item: Item = Item()
     
@@ -16,25 +16,25 @@ class ItemLabel: UILabel {
         
     }
     
-    override var text: String? {
+    override public var text: String? {
         didSet{
             textChangeBlock()
         }
     }
     
-    override var attributedText: NSAttributedString? {
+    override public var attributedText: NSAttributedString? {
         didSet{
             textChangeBlock()
         }
     }
     
-    override var font: UIFont! {
+    override public var font: UIFont! {
         didSet{
             textChangeBlock()
         }
     }
     
-    override var numberOfLines: Int {
+    override public var numberOfLines: Int {
         didSet{
             textChangeBlock()
         }

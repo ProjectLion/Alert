@@ -12,7 +12,7 @@ import UIKit
 /// Debug输出
 public func print<T>(message: T, file: String = #file, line: Int = #line, method: String = #function) {
     #if DEBUG
-    print("这里是\((file as NSString).lastPathComponent)文件的第\(line)行,\(method)方法,logMessage: \(message)")
+    print("\((file as NSString).lastPathComponent)文件第\(line)行,\(method)方法,logMessage: \(message)")
     #endif
 }
 
@@ -38,45 +38,45 @@ public func viewSafeaInsets(view: UIView) -> UIEdgeInsets {
 
 //MARK: ^^^^^^^^^^^^^^^ 别名 ^^^^^^^^^^^^^^^
 
-typealias Config = () -> Void
+public typealias Config = () -> Void
 
-typealias ConfigToBool = (Bool) -> Void
+public typealias ConfigToBool = (Bool) -> Void
 
-typealias ConfigToInt = (Int) -> Void
+public typealias ConfigToInt = (Int) -> Void
 
-typealias ConfigToCGFloat = (CGFloat) -> Void
+public typealias ConfigToCGFloat = (CGFloat) -> Void
 
-typealias ConfigToString = (String) -> Void
+public typealias ConfigToString = (String) -> Void
 
-typealias ConfigToView = (UIView) -> Void
+public typealias ConfigToView = (UIView) -> Void
 
-typealias ConfigToColor = (UIColor) -> Void
+public typealias ConfigToColor = (UIColor) -> Void
 
-typealias ConfigToSize = (CGSize) -> Void
+public typealias ConfigToSize = (CGSize) -> Void
 
-typealias ConfigToEdgeInsets = (UIEdgeInsets) -> Void
+public typealias ConfigToEdgeInsets = (UIEdgeInsets) -> Void
 
-typealias ConfigToEffectStyle = (UIBlurEffect.Style) -> Void
+public typealias ConfigToEffectStyle = (UIBlurEffect.Style) -> Void
 
-typealias ConfigToInterfaceOrientationMask = (UIInterfaceOrientationMask) -> Void
+public typealias ConfigToInterfaceOrientationMask = (UIInterfaceOrientationMask) -> Void
 
-typealias ConfigToCGFloatBlock = (ScreenOrientationType) -> CGFloat
+public typealias ConfigToCGFloatBlock = (ScreenOrientationType) -> CGFloat
 
-typealias ConfigToAction = (Action) -> Void
+public typealias ConfigToAction = (Action) -> Void
 
-typealias ConfigToCustomView = (CustomView) -> Void
+public typealias ConfigToCustomView = (CustomView) -> Void
 
-typealias ConfigToStringAndBlock = (String, () -> Void) -> Void
+public typealias ConfigToStringAndBlock = (String, () -> Void) -> Void
 
-typealias ConfigToLabel = (UILabel) -> Void
+public typealias ConfigToLabel = (UILabel) -> Void
 
-typealias ConfigToTextField = (UITextField) -> Void
+public typealias ConfigToTextField = (UITextField) -> Void
 
-typealias ConfigToItem = (Item) -> Void
+public typealias ConfigToItem = (Item) -> Void
 
-typealias ConfigToBlock = () -> Void
+public typealias ConfigToBlock = () -> Void
 
-typealias ConfigToBlockAndBlock = (_ animatingBlock: @escaping () -> Void,_ animatedBlock: @escaping () -> Void) -> Void
+public typealias ConfigToBlockAndBlock = (_ animatingBlock: @escaping () -> Void,_ animatedBlock: @escaping () -> Void) -> Void
 
 /**************************/
 

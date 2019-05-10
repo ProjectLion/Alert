@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Alert
 
 class SheetTableVC: UITableViewController {
 
@@ -142,8 +143,8 @@ extension SheetTableVC {
                     action.title = "取消"
                     action.type = .cancel
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .action("确定") {
                     // 点击确定按钮的回调
@@ -159,8 +160,8 @@ extension SheetTableVC {
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .show()
         case 3:
@@ -176,8 +177,8 @@ extension SheetTableVC {
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .show()
         case 4:
@@ -198,8 +199,8 @@ extension SheetTableVC {
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .show()
         case 5:
@@ -220,8 +221,8 @@ extension SheetTableVC {
                 .addAction(config: { (action) in
                     action.title = "取消"
                     action.color = .red
-                    action.highLightTitle = "高亮了"
-                    action.highLightColor = .cyan
+                    action.highlightTitle = "高亮了"
+                    action.highlightColor = .cyan
                 })
                 .show()
         case 6:

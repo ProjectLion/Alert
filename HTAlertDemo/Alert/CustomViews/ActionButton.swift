@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActionButton: UIButton {
+public class ActionButton: UIButton {
     
     public var heightChangeBlock: () -> Void = {
         
@@ -98,7 +98,7 @@ class ActionButton: UIButton {
         }
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         if let top = topLayer {
             top.frame = CGRect(x: 0, y: 0, width: width, height: borderWidth)

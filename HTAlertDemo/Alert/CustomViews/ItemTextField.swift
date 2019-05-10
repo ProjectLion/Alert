@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemTextField: UITextField {
+public class ItemTextField: UITextField {
     
     public var item: Item = Item()
     
