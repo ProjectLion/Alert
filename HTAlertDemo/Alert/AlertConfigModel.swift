@@ -22,6 +22,9 @@ public class AlertConfigModel: NSObject {
         return dict
     }()
     
+    /// 自定义view对象 CustomAlert
+    public var customAlert: CustomAlert!
+    
     /// 圆角半径 默认 15
     public var cornerRadius: CGFloat = 15
     
@@ -213,6 +216,14 @@ extension AlertConfigModel {
         return self
     }
     
+    /// 设置自定义视图
+    ///
+    /// - Parameter view: 自定义视图对象 UIView
+    /// - Returns: self
+    @discardableResult public func useCustomAlert(_ custom: CustomAlert) -> AlertConfigModel {
+        customAlert = custom
+        return self
+    }
     
     /// 设置默认响应项
     ///
@@ -712,6 +723,7 @@ extension AlertConfigModel {
     
 }
 
+// MARK: ^^^^^^^^^^^^^^^  AlertConfigModel 动画类型  ^^^^^^^^^^^^^^^
 extension AlertConfigModel {
     /// 动画类型
     public struct AnimationStyle: OptionSet {
@@ -721,53 +733,21 @@ extension AlertConfigModel {
             self.rawValue = rawValue
         }
         /// 默认
-        public static var none: AnimationStyle {
-            get {
-                return AnimationStyle(rawValue: 1)
-            }
-        }
+        public static let none = AnimationStyle(rawValue: 1)
         /// 上
-        public static var top: AnimationStyle {
-            get {
-                return AnimationStyle(rawValue: 2)
-            }
-        }
+        public static let top = AnimationStyle(rawValue: 2)
         /// 下
-        public static var bottom: AnimationStyle {
-            get {
-                return AnimationStyle(rawValue: 4)
-            }
-        }
+        public static let bottom = AnimationStyle(rawValue: 4)
         /// 左
-        public static var left: AnimationStyle {
-            get {
-                return AnimationStyle(rawValue: 8)
-            }
-        }
+        public static let left = AnimationStyle(rawValue: 8)
         /// 右
-        public static var right: AnimationStyle {
-            get {
-                return AnimationStyle(rawValue: 16)
-            }
-        }
+        public static let right = AnimationStyle(rawValue: 16)
         /// 淡出淡入
-        public static var fade: AnimationStyle {
-            get {
-                return AnimationStyle(rawValue: 32)
-            }
-        }
+        public static let fade = AnimationStyle(rawValue: 32)
         /// 放大
-        public static var magnify: AnimationStyle {
-            get {
-                return AnimationStyle(rawValue: 64)
-            }
-        }
+        public static let magnify = AnimationStyle(rawValue: 64)
         /// 缩小
-        public static var shrink: AnimationStyle {
-            get {
-                return AnimationStyle(rawValue: 128)
-            }
-        }
+        public static let shrink = AnimationStyle(rawValue: 128)
         
     }
 }
