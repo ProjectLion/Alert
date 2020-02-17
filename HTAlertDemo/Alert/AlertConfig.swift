@@ -79,6 +79,7 @@ extension AlertConfig {
         case .sheet:
             Alert.shared.viewController = ActionSheetViewController()
             config.openAnimationStyle([.bottom, .fade])
+            .isClickBackgroundClose(true)
             .closeAnimationStyle([.bottom, .fade])
                 .configMaxWidth(block: { (scrrenType) -> CGFloat in
                     switch scrrenType {
@@ -88,6 +89,14 @@ extension AlertConfig {
                         return Scrren_W - viewSafeaInsets(view: Alert.getAlertWindow()).left - viewSafeaInsets(view: Alert.getAlertWindow()).right - 20
                     }
                 })
+                .configMaxHeight { (scrrenType) -> CGFloat in
+                    return Scrren_H - 40 - viewSafeaInsets(view: Alert.getAlertWindow()).top - viewSafeaInsets(view: Alert.getAlertWindow()).bottom
+            }
+        case .custom:
+            Alert.shared.viewController = CustomAlertViewController()
+            config
+                .maxWidth(290)
+                .isClickBackgroundClose(false)
                 .configMaxHeight { (scrrenType) -> CGFloat in
                     return Scrren_H - 40 - viewSafeaInsets(view: Alert.getAlertWindow()).top - viewSafeaInsets(view: Alert.getAlertWindow()).bottom
             }

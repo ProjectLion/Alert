@@ -133,58 +133,13 @@ extension UIView {
  *   Method
  */
 extension UIView {
-    
-    /// 创建一个view
-    ///
-    /// - Parameters:
-    ///   - x: x
-    ///   - y: y
-    ///   - width: width
-    ///   - height: height
-    ///   - backGroundColor: 背景色
-    convenience init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, backGroundColor: UIColor = .white){
-        self.init(frame: CGRect(x: x, y: y, width: width, height: height))
-        self.backgroundColor = backGroundColor
-    }
-    
-    /// 添加边框、颜色及切圆角 (默认为灰色1.5宽的边框,圆角半径为5)
-    ///
-    /// - Parameters:
-    ///   - borderWith: 边框宽
-    ///   - borderColor: 边框颜色
-    ///   - cornerRadius: 圆角半径
-    @discardableResult open func ht_add(borderWith: CGFloat = 1.5, borderColor: UIColor = .gray, cornerRadius: CGFloat = 5) -> UIView {
-        self.layer.borderWidth = borderWith
-        self.layer.borderColor = borderColor.cgColor
-        self.layer.cornerRadius = cornerRadius
-        if cornerRadius > 0 {
-            self.clipsToBounds = true
-        }
-        return self
-    }
-    
-    /// 对当前view截图
-    ///
-    /// - Returns: 返回UIImage or nil
-    open func shot() -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
-        
-        if self.responds(to: #selector(drawHierarchy(in:afterScreenUpdates:))) {
-            self.drawHierarchy(in: self.bounds, afterScreenUpdates: false)
-        } else {
-            self.layer.render(in: UIGraphicsGetCurrentContext()!)
-        }
-        let shotImg = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return shotImg
-    }
-    
+
     ///画虚线边框
-    
+
     func drawDashLine(strokeColor: UIColor, lineWidth: CGFloat = 1, lineLength: Int = 10, lineSpacing: Int = 5, corners: BorderPosition) {
-        
+
         let shapeLayer = CAShapeLayer()
-        
+
         shapeLayer.bounds = self.bounds
         
         shapeLayer.anchorPoint = CGPoint(x: 0, y: 0)

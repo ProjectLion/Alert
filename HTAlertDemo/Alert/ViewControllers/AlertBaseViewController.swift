@@ -69,8 +69,6 @@ class AlertBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         edgesForExtendedLayout = .top
         extendedLayoutIncludesOpaqueBars = false
         
-        
-        
 //        if #available(iOS 11, *) {
 //            automaticallyAdjustsScrollViewInsets = false
 //        }

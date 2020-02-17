@@ -376,27 +376,6 @@ class AlertViewController: AlertBaseViewController {
             containerView?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }
         
-//        switch config.openAnimationStyle {
-//        case .none:
-//
-//        case .top:
-//
-//        case .bottom:
-//
-//        case .left:
-//
-//        case .right:
-//
-//        case .fade:
-//
-//        case .magnify:
-//
-//        case .shrink:
-//
-//        default:
-//            break
-//        }
-        
         config.openAnimationBlock({
             [weak self] in
             switch (self?.config.backgroundStyle)! {

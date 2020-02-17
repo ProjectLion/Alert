@@ -40,6 +40,8 @@ public func viewSafeaInsets(view: UIView) -> UIEdgeInsets {
 
 public typealias Config = () -> Void
 
+public typealias ConfigToCustomAlert = (CustomAlert) -> Void
+
 public typealias ConfigToBool = (Bool) -> Void
 
 public typealias ConfigToInt = (Int) -> Void
@@ -104,6 +106,7 @@ public enum CustomViewPosition {
 public enum AlertType {
     case alert
     case sheet
+    case custom
 }
 
 /// 屏幕方向

@@ -39,11 +39,6 @@ public class Alert: NSObject {
     var viewController: AlertBaseViewController!
     
     /// alert
-//    class func alert() -> AlertConfig {
-//        let config = AlertConfig()
-//        config.type = .alert
-//        return config
-//    }
     public static var alert: AlertConfig {
         get {
             let config = AlertConfig()
@@ -53,16 +48,20 @@ public class Alert: NSObject {
     }
     
     /// sheet
-//    class func sheet() -> AlertConfig {
-//        let config = AlertConfig()
-//        config.type = .sheet
-//        config.config.isClickBackgroundClose(true)
-//        return config
-//    }
     public static var sheet: AlertConfig {
         get {
             let config = AlertConfig()
             config.type = .sheet
+            config.config.isClickBackgroundClose(true)
+            return config
+        }
+    }
+    
+    /// custom
+    public static var custom: AlertConfig {
+        get {
+            let config = AlertConfig()
+            config.type = .custom
             config.config.isClickBackgroundClose(true)
             return config
         }
